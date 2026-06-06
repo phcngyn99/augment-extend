@@ -4,32 +4,36 @@
 
 ## Install (New Machine)
 
-**Clone → cd → start Auggie → run install:**
+**Clone → cd → install:**
 
 ```bash
-# 1. Clone to staging
-git clone https://github.com/phcngyn99/augment-extend ~/Downloads/augment-extend
+# 1. Clone repo
+git clone git@github.com:phcngyn99/augment-extend.git ~/Downloads/augment-extend
 
 # 2. cd into repo
 cd ~/Downloads/augment-extend
 
-# 3. Start Auggie session IN this repo
+# 3a. With Auggie (recommended):
 auggie
+# Then tell Auggie: "install this augment config"
 
-# 4. Tell Auggie (canonical prompt):
-"install this augment config"
+# 3b. Direct install:
+./install.sh
 ```
 
-**What Auggie does:**
-- Reads README.md (this file)
-- Executes `./install.sh`
-- Script backs up `~/.augment` if exists → `~/.augment.backup-TIMESTAMP`
+**What install does:**
+- Backs up `~/.augment` if exists → `~/.augment.backup-TIMESTAMP`
 - Copies all files → `~/.augment`
-- Inits git tracking (remote: phcngyn99/augment-extend)
+- Inits git (remote: git@github.com:phcngyn99/augment-extend.git)
 - Creates `settings.json` from template
 - Sets executable permissions
 - Verifies counts (11 rules, 98 skills, 38 agents)
-- Reports success
+
+**For Auggie to run install:**
+1. Read this README
+2. Execute `./install.sh` from current directory
+3. Report results
+4. Run verification commands below
 
 **Success criteria:**
 - ✅ Script reports "Installation successful"

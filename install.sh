@@ -4,7 +4,7 @@ set -euo pipefail
 # Augment Extend — Central Install Script
 # Installs this repo's config to ~/.augment
 
-REPO_REMOTE="https://github.com/phcngyn99/augment-extend"
+REPO_REMOTE="git@github.com:phcngyn99/augment-extend.git"
 TARGET_DIR="${HOME}/.augment"
 BACKUP_DIR="${HOME}/.augment.backup-$(date +%Y%m%d-%H%M%S)"
 
