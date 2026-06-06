@@ -22,6 +22,30 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
+## Pre-Planning: CodeGraph Discovery (if available)
+
+**IF .codegraph/ index exists:**
+
+1. **Search for existing symbols** — `codegraph_search` for main entities mentioned in spec
+   - Prevents duplicate/conflicting implementations
+   - Verifies existing signatures before planning changes
+
+2. **Get file structure** — `codegraph_files` (faster than filesystem scanning)
+   - See indexed structure grouped by directory
+   - Inform where new files should live
+
+3. **Verify implementations** — `codegraph_node` for any symbol you'll modify
+   - Returns full source + all overloads for ambiguous names
+   - Check current signatures before planning new ones
+
+4. **Check impact** — `codegraph_impact` on any symbol you'll change
+   - See blast radius BEFORE writing tasks
+   - Plan updates for all affected callers
+
+This informs file structure decisions below.
+
+**OTHERWISE:** Proceed to file structure mapping with standard file tools.
+
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.

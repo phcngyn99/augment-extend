@@ -37,6 +37,30 @@ BEFORE claiming any status or expressing satisfaction:
 Skip any step = lying, not verifying
 ```
 
+## CodeGraph Impact Analysis (MANDATORY for API changes)
+
+**BEFORE claiming any signature/API change complete:**
+
+**IF .codegraph/ exists:**
+
+```
+1. codegraph_impact symbol="changedFunction" depth=2
+   → See FULL blast radius
+   → Returns all affected symbols + call paths
+
+2. codegraph_callers symbol="changedFunction"
+   → Complete list of ALL callers
+   → Verify EVERY caller updated
+
+3. Check returned analysis
+   → If any caller NOT updated: NOT complete
+   → If impact radius shows unexpected affects: investigate
+
+NO EXCEPTIONS — run this BEFORE claiming signature changes complete
+```
+
+**OTHERWISE:** Manual caller verification via grep (incomplete, easy to miss).
+
 ## Common Failures
 
 | Claim | Requires | Not Sufficient |
@@ -48,6 +72,7 @@ Skip any step = lying, not verifying
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
+| **Signature changed** | **codegraph_impact + all callers updated** | **Grep (misses indirect callers)** |
 
 ## Red Flags - STOP
 

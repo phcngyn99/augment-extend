@@ -123,4 +123,19 @@ Session N:  "use brainstorming for integration testing"
 | Large (1+ day) | Full pipeline. Multi-session. Worktrees. |
 | Massive (multi-day) | Decompose → sub-project cycles → parallel worktrees |
 
+## CodeGraph Integration (optional, when available)
+
+**IF project has `.codegraph/` directory:**
+
+CodeGraph provides semantic code intelligence that accelerates all skills:
+
+- **brainstorming** — `codegraph_explore` understands existing architecture before design
+- **writing-plans** — `codegraph_search` finds symbols, `codegraph_files` shows structure
+- **systematic-debugging** — `codegraph_callers`/`codegraph_callees` trace flows
+- **verification-before-completion** — `codegraph_impact` checks blast radius before claiming done
+
+**To enable:** Run `codegraph init -i` in project root (one-time setup).
+
+**Key benefit:** Answers "how does X work" in 1 call vs 10+ file reads.
+
 ---

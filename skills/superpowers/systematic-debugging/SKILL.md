@@ -73,7 +73,24 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN system has multiple components (CI → build → signing, API → service → database):**
 
-   **BEFORE proposing fixes, add diagnostic instrumentation:**
+   **IF .codegraph/ exists (use semantic intelligence first):**
+   ```
+   1. codegraph_impact on the failing symbol/function
+      → See full blast radius of what's affected
+
+   2. codegraph_callers on entry point
+      → Trace who calls into this component
+
+   3. codegraph_callees from entry point
+      → See what the component calls downstream
+
+   4. codegraph_explore with component boundary symbols
+      → Get full flow + relationship map in one call
+
+   THEN add targeted instrumentation ONLY at gaps CodeGraph didn't cover
+   ```
+
+   **OTHERWISE (no CodeGraph), add diagnostic instrumentation:**
    ```
    For EACH component boundary:
      - Log what data enters component
@@ -110,6 +127,25 @@ You MUST complete each phase before proceeding to the next.
 5. **Trace Data Flow**
 
    **WHEN error is deep in call stack:**
+
+   **IF .codegraph/ exists:**
+   ```
+   1. codegraph_callers symbol="failingFunction"
+      → Trace backward from error site
+      → See ALL call paths leading here
+
+   2. codegraph_impact symbol="failingFunction" depth=2
+      → See what else this affects
+
+   3. codegraph_explore with symbols from error stack trace
+      → Reconstruct full flow in one call
+      → Surfaces dynamic-dispatch hops (callbacks, React re-render)
+
+   4. Check returned source — treat as already Read
+      → Don't re-verify with grep
+   ```
+
+   **OTHERWISE, manual tracing:**
 
    See `root-cause-tracing.md` in this directory for the complete backward tracing technique.
 

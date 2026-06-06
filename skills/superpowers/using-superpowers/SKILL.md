@@ -39,6 +39,28 @@ If AGENTS.md, GEMINI.md, or AGENTS.md says "don't use TDD" and a skill says "alw
 
 Skills use Augment Agent tool names. Non-CC platforms: see `references/copilot-tools.md` (Copilot CLI), `references/codex-tools.md` (Codex) for tool equivalents. Gemini CLI users get the tool mapping loaded automatically via GEMINI.md.
 
+## CodeGraph Integration (when available)
+
+**IF .codegraph/ directory exists in project root:**
+
+CodeGraph provides semantic code intelligence via MCP. Use CodeGraph tools BEFORE file reads for structural questions:
+
+| Intent | Use This (CodeGraph) | NOT That (file-based) |
+|--------|----------------------|----------------------|
+| "How does X work" / flow questions | codegraph_explore | view + grep loop |
+| Find symbol by name | codegraph_search | codebase-retrieval |
+| Who calls this function | codegraph_callers | manual grep |
+| What this calls | codegraph_callees | manual grep |
+| Impact before edit | codegraph_impact | guess + hope |
+| Get full source + all overloads | codegraph_node | view (misses overloads) |
+| File structure | codegraph_files | view directory |
+
+**Key principle:** CodeGraph answers semantic questions in 1 call vs 10+ Read/Grep cycles. Treat returned source as already Read — don't re-verify with grep.
+
+**If .codegraph/ missing:** Offer to initialize: "Run `codegraph init -i` to enable semantic search?" Then proceed with standard file tools.
+
+**CodeGraph is an input tool** — it accelerates discovery but doesn't bypass TDD, verification, or review gates. Skills still apply.
+
 # Using Skills
 
 ## The Rule

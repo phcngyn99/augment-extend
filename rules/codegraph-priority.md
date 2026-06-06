@@ -2,11 +2,21 @@
 
 When working with **code** (not docs/config), use CodeGraph MCP tools for semantic analysis before falling back to file-based tools.
 
+**CodeGraph + Superpowers = complete system.** CodeGraph provides semantic intelligence that supercharges all superpowers skills.
+
 ---
 
 ## Core Principle
 
 CodeGraph provides **semantic indexing** — understands code structure, call graphs, dependencies. Use it over text-based tools (`view`, `grep`, `codebase-retrieval`) when analyzing code relationships.
+
+**Integration with superpowers:** When using `superpowers-workflow`, CodeGraph tools are automatically prioritized in:
+- `brainstorming` — understanding existing architecture
+- `writing-plans` — discovering symbols/structure before planning
+- `systematic-debugging` — tracing call flows during root cause investigation
+- `verification-before-completion` — MANDATORY impact analysis before signature changes
+
+See `superpowers-priority.md` for full integration details.
 
 ---
 

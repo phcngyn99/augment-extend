@@ -75,6 +75,44 @@ Before implementing, debugging, planning, or reviewing:
 | Git workflow | `skills/superpowers/using-git-worktrees`, `finishing-a-development-branch` | `skills/ecc/git-workflow` |
 | Brainstorming | `skills/superpowers/brainstorming` | Any ECC brainstorming/ideation skills |
 
+## CodeGraph Integration (superpowers + CodeGraph = complete system)
+
+**CodeGraph and superpowers are a pair.** When `.codegraph/` exists, CodeGraph provides semantic intelligence that supercharges all superpowers skills.
+
+### Tool Priority (when .codegraph/ exists)
+
+**CodeGraph tools take priority over file-based discovery for semantic questions:**
+
+| Question Type | Use This FIRST | NOT This |
+|---------------|----------------|----------|
+| "How does X work" / flow questions | `codegraph_explore` | `view` + `grep` loop |
+| "Find symbol/function/class" | `codegraph_search` | `codebase-retrieval` |
+| "Who calls this function" | `codegraph_callers` | manual `grep` |
+| "What does this call" | `codegraph_callees` | manual `grep` |
+| "Impact before changing X" | `codegraph_impact` | guess + hope |
+| "Get full source + overloads" | `codegraph_node` | `view` (misses overloads) |
+| "Show file structure" | `codegraph_files` | `view` directory |
+
+**Key principle:** CodeGraph answers semantic questions in **1 call vs 10+ Read/Grep cycles**. Treat returned source as already Read — don't re-verify with grep.
+
+### Integration Points
+
+CodeGraph enhances these superpowers skills:
+
+- **brainstorming** — `codegraph_explore` understands existing architecture before design
+- **writing-plans** — `codegraph_search`/`codegraph_files` map symbols/structure before planning
+- **systematic-debugging** — `codegraph_callers`/`codegraph_callees`/`codegraph_impact` trace flows
+- **verification-before-completion** — `codegraph_impact` MANDATORY before signature changes
+
+### Graceful Fallback
+
+**IF .codegraph/ missing:**
+- Superpowers skills fall back to file-based tools (`view`, `codebase-retrieval`, `grep`)
+- Offer to initialize: "Run `codegraph init -i` to enable semantic search?"
+- All workflows continue unchanged — CodeGraph is optional enhancement
+
+**CodeGraph is an input tool** — accelerates discovery but doesn't bypass TDD/verification/review gates. Superpowers workflow still applies.
+
 ## ECC-only (no superpowers equivalent — use freely)
 
 - Language-specific reviewer agents (cpp, go, rust, python, java, kotlin, typescript, csharp, flutter)
