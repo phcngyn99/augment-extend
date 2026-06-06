@@ -1,6 +1,6 @@
 # Augment Extend — Central Install
 
-11 rules · 98 skills · 38 agents — Superpowers + ECC + Caveman + Custom + UI/UX
+11 rules · 99 skills · 38 agents — Superpowers + ECC + Caveman + Custom + UI/UX
 
 ## Install (Machine with Auggie)
 
@@ -94,7 +94,7 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 
 **Rules (11):** caveman, superpowers-priority, session-lifecycle, coding-principles, karpathy, security, agentic-workflow, codegraph-priority, context-md, research-delegation, honest-feedback
 
-**Skills (98):** Superpowers (15), ECC (68), Caveman (7), Custom (7), UI/UX (1)
+**Skills (99):** Superpowers (16), ECC (67), Caveman (5), Custom (10), UI/UX (1)
 
 **Agents (38):** code-reviewer + 37 ECC (lang reviewers, build resolvers, domain specialists)
 

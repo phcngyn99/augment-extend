@@ -18,7 +18,7 @@
 
 ---
 
-## Superpowers (15 skills, 1 agent)
+## Superpowers (16 skills, 1 agent)
 
 **Primary framework** — language-agnostic, triggers via mandatory activation checklist (`rules/superpowers-priority.md`).
 
@@ -175,7 +175,7 @@ python3 ~/.augment/skills/ui-ux-pro-max/scripts/search.py "fintech" --domain sty
 
 ---
 
-## Caveman (7 skills)
+## Caveman (5 skills)
 
 **Token compression** — 75% reduction, auto-active at **full** level.
 
@@ -191,7 +191,7 @@ python3 ~/.augment/skills/ui-ux-pro-max/scripts/search.py "fintech" --domain sty
 
 ---
 
-## Custom/Matt Pocock (7 skills)
+## Custom/Matt Pocock (10 skills)
 
 Repository/team-specific workflows.
 

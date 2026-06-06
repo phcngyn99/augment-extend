@@ -11,7 +11,7 @@ Notable changes.
 - `README.md` — replaced checkmark/lock with plain text
 - `skills/ecc/ck/SKILL.md` — checkmark/cross → GOOD/BAD
 - `skills/ui-ux-pro-max/SKILL.md` — removed emoji from table
-- Complies with `rules/caveman-activate.md` (no emojis in conversation text)
+- Complies with `rules/caveman-no-fucking-emoji.md` (no emojis in conversation text)
 
 ---
 
