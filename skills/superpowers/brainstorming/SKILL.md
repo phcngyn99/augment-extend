@@ -22,11 +22,15 @@ Every project goes through this process. A todo list, a single-function utility,
 You MUST create a task for each of these items and complete them in order:
 
 1. **Explore project context** — check files, docs, recent commits
-   - **IF .codegraph/ exists:** Use codegraph_explore to understand current architecture before designing changes
-     - Answer "how does X work" questions via CodeGraph (not file reads)
-     - Use codegraph_search to find existing symbols/patterns
+   - **Check for .codegraph/ index first**
+   - **IF .codegraph/ exists — use CodeGraph tools:**
+     - `codegraph_explore` to understand architecture before designing changes
+     - `codegraph_search` to find existing symbols/patterns
+     - `codegraph_files` for directory structure
      - Treat returned source as already Read
-   - **OTHERWISE:** Use view + codebase-retrieval as usual
+   - **IF .codegraph/ missing:**
+     - Announce: "CodeGraph not indexed — recommend `codegraph init -i`"
+     - Fallback: view + codebase-retrieval
 2. **Offer visual companion** (if topic will involve visual questions) — this is its own message, not combined with a clarifying question. See the Visual Companion section below.
 3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
 4. **Propose 2-3 approaches** — with trade-offs and your recommendation

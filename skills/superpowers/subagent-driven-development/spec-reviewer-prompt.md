@@ -4,8 +4,11 @@ Use this template when dispatching a spec compliance reviewer subagent.
 
 **Purpose:** Verify implementer built what was requested (nothing more, nothing less)
 
+**Agent naming:** `superpowers-spec-reviewer-task-N` (e.g., `superpowers-spec-reviewer-task-1`)
+
 ```
 Task tool (general-purpose):
+  name: "superpowers-spec-reviewer-task-N"
   description: "Review spec compliance for Task N"
   prompt: |
     You are reviewing whether an implementation matches its specification.
