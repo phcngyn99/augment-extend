@@ -258,7 +258,8 @@ No shortcuts. Quality over speed."
 - Refactor: preserve behavior plan
 - Investigation: action plan
 - Parallel: plan per independent item
-- Save plan: `docs/superpowers/plans/YYYY-MM-DD-topic.md`
+- Plan location: Auto-detected project root (NEVER ~/.augment)
+- Save plan: `<project-root>/docs/superpowers/plans/YYYY-MM-DD-topic.md`
 - **Skill: 4/15**
 
 **Checkpoint**

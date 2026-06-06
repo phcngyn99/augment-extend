@@ -15,20 +15,46 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 **Context:** This should be run in a dedicated worktree (created by brainstorming skill).
 
-**Save plans to:** `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
+## Plan Location Detection
+
+**NEVER write plans to `~/.augment` unless working on Augment config itself.**
+
+**Project-aware plan location (MANDATORY):**
+
+1. **Check if .codegraph/ exists in current workspace:**
+   - IF yes: Use `codegraph_files` to search for existing `docs/superpowers/plans` directory
+   - IF found: Save there
+   - IF not found: Create `docs/superpowers/plans/` in project root (where .codegraph/ is)
+
+2. **IF no .codegraph/ index:**
+   - Check for git root: `git rev-parse --show-toplevel`
+   - Save to `<git-root>/docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
+   - Create directory if missing
+
+3. **IF no git root found:**
+   - Use current working directory: `$PWD/docs/superpowers/plans/`
+   - Create directory if missing
+
+4. **Verification:**
+   - After determining path, ALWAYS verify it's NOT in `~/.augment` (unless that's the actual project)
+   - Announce plan location before writing: "Plan will be saved to: `<path>`"
+
+**Default format:** `docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
 - (User preferences for plan location override this default)
 
 ## Scope Check
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
-## Pre-Planning: CodeGraph Discovery (if available)
+## Pre-Planning: CodeGraph Discovery (MANDATORY when .codegraph/ exists)
 
-**IF .codegraph/ index exists:**
+**Check for .codegraph/ index first.**
 
-1. **Search for existing symbols** — `codegraph_search` for main entities mentioned in spec
+**IF .codegraph/ exists — use CodeGraph tools (NOT codebase-retrieval/view/grep for semantic questions):**
+
+1. **Search existing symbols** — `codegraph_search` for main entities in spec
    - Prevents duplicate/conflicting implementations
-   - Verifies existing signatures before planning changes
+   - Verifies signatures before planning changes
 
 2. **Get file structure** — `codegraph_files` (faster than filesystem scanning)
    - See indexed structure grouped by directory
@@ -36,15 +62,19 @@ If the spec covers multiple independent subsystems, it should have been broken i
 
 3. **Verify implementations** — `codegraph_node` for any symbol you'll modify
    - Returns full source + all overloads for ambiguous names
-   - Check current signatures before planning new ones
+   - Check current signatures before planning
 
 4. **Check impact** — `codegraph_impact` on any symbol you'll change
    - See blast radius BEFORE writing tasks
    - Plan updates for all affected callers
 
+**Key principle:** CodeGraph answers in 1 call vs 10+ file reads. Treat returned source as already Read.
+
 This informs file structure decisions below.
 
-**OTHERWISE:** Proceed to file structure mapping with standard file tools.
+**IF .codegraph/ missing:**
+- Announce: "CodeGraph not indexed — recommend `codegraph init -i`"
+- Fallback: `view`, `codebase-retrieval`, grep
 
 ## File Structure
 

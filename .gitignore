@@ -62,6 +62,9 @@ Thumbs.db
 # ── Worktrees (temporary dev branches) ─────────────────────────────────────────
 .worktrees/
 
+# ── Plans (working documents, local only) ──────────────────────────────────────
+plans/
+
 # ── What GETS TRACKED ──────────────────────────────────────────────────────────
 # rules/                      — Auto rules
 # skills/                     — All skills
