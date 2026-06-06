@@ -2,59 +2,34 @@
 
 11 rules · 98 skills · 38 agents — Superpowers + ECC + Caveman + Custom + UI/UX
 
-## Install (New Machine)
+## Install (Machine with Auggie)
 
-**Clone repo anywhere, cd into it, run install:**
+**Prerequisites:** Auggie installed, `~/.augment` exists.
 
 ```bash
-# Clone to any location
-git clone git@github.com:phcngyn99/augment-extend.git
+# 1. Init git in ~/.augment
+cd ~/.augment
+git init
 
-# cd into cloned repo
-cd augment-extend
+# 2. Add remote
+git remote add origin git@github.com:phcngyn99/augment-extend.git
 
-# Option A: With Auggie (recommended)
-auggie
-# Tell Auggie: "install this augment config"
+# 3. Fetch + checkout
+git fetch
+git checkout -b main --track origin/main
 
-# Option B: Direct install
-./install.sh
+# 4. Verify
+git pull  # Should say "Already up to date"
 ```
 
-**What install does:**
-- Backs up `~/.augment` if exists → `~/.augment.backup-TIMESTAMP`
-- Copies all files → `~/.augment`
-- Inits git (remote: git@github.com:phcngyn99/augment-extend.git)
-- Creates `settings.json` from template
-- Sets executable permissions
-- Verifies counts (11 rules, 98 skills, 38 agents)
+**What happens:**
+- Git merges repo into existing ~/.augment
+- Keeps your credentials/sessions (gitignored)
+- settings.json.template available for reference
 
-**For Auggie:**
-1. Read this README
-2. Run `./install.sh` from current directory
-3. Check exit code (0 = success)
-4. Run verification commands below
-5. Report results
-
-**Success criteria:**
-- ✅ Script reports "Installation successful"
-- ✅ Counts match: 11 rules, 98 skills, 38 agents
-- ✅ `~/.augment/.git` exists
-- ✅ `git remote -v` shows `phcngyn99/augment-extend`
-- ✅ `settings.json` created from template
-- ✅ `cd ~/.augment && git pull` → "Already up to date"
-
-**After install:**
+**Edit settings.json for your machine:**
 ```bash
-# Exit Auggie, delete staging repo
-exit
-rm -rf ~/Downloads/augment-extend
-
-# Edit settings.json for your machine (indexingAllowDirs)
 nano ~/.augment/settings.json
-
-# Restart Auggie to load config
-auggie
 ```
 
 ## Update
@@ -91,36 +66,6 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 - `binaries/` — Platform-specific executables
 
 **You can edit local files freely — git won't touch them.**
-
-## Troubleshooting
-
-### Install Failed at Git Setup
-
-If install copied files but git remote failed:
-
-```bash
-# Already in cloned repo
-git pull
-
-# Copy .gitignore to ~/.augment
-cp .gitignore ~/.augment/
-
-# Fix git remote
-cd ~/.augment
-git remote set-url origin git@github.com:phcngyn99/augment-extend.git
-# If no remote exists: git remote add origin git@github.com:phcngyn99/augment-extend.git
-
-# Verify pull works
-git pull
-
-# Delete cloned repo
-cd ..
-rm -rf augment-extend
-```
-
-Keeps existing credentials/sessions intact.
-
----
 
 ## What You Get
 
