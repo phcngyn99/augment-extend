@@ -1,0 +1,175 @@
+# Modern Makefile Template
+# Based on: GNU Make best practices, Cloud Posse reference architecture, Kubernetes patterns
+# References:
+#   - https://tech.davis-hansson.com/p/make/
+#   - https://docs.cloudposse.com/best-practices/developer/makefile/
+#   - https://github.com/kubernetes-sigs/kubebuilder/blob/master/Makefile
+
+# Modern sensible defaults (GNU Make 4.0+)
+SHELL := bash
+.ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+MAKEFLAGS += --no-print-directory
+
+# Default target
+.DEFAULT_GOAL := help
+
+# Configuration variables (user-overridable)
+APP_NAME ?= myapp
+VERSION ?= $(shell git describe --tags 2>/dev/null || echo "dev-$(shell git rev-parse --short HEAD 2>/dev/null || echo "unknown")")
+REGISTRY ?= docker.io
+ENVIRONMENT ?= dev
+CONTAINER_NAME ?= $(APP_NAME)
+
+# Docker Compose command (supports v1 and v2)
+DOCKER_COMPOSE := $(shell command -v docker-compose 2>/dev/null || echo "docker compose")
+
+# Colors for output (use with printf, not echo)
+COLOR_RESET := \033[0m
+COLOR_BOLD := \033[1m
+COLOR_GREEN := \033[32m
+COLOR_YELLOW := \033[33m
+COLOR_BLUE := \033[34m
+
+##@ Help
+
+.PHONY: help
+help: ## Show this help message
+	@printf "$(COLOR_BOLD)Available targets:$(COLOR_RESET)\n"
+	@printf "\n"
+	@awk 'BEGIN {FS = ":.*##"; category = ""} \
+		/^##@/ {category = substr($$0, 5); printf "\n$(COLOR_BLUE)%s:$(COLOR_RESET)\n", category; next} \
+		/^[a-zA-Z_/-]+:.*?##/ {printf "  $(COLOR_GREEN)%-20s$(COLOR_RESET) %s\n", $$1, $$2}' \
+		$(MAKEFILE_LIST)
+
+##@ Dependencies
+
+.PHONY: check-deps
+check-deps: ## Check required dependencies
+	@printf "$(COLOR_BOLD)Checking dependencies...$(COLOR_RESET)\n"
+	@command -v docker >/dev/null 2>&1 || { printf "$(COLOR_YELLOW)ERROR: Docker not found$(COLOR_RESET)\n"; exit 1; }
+	@command -v $(DOCKER_COMPOSE) >/dev/null 2>&1 || { printf "$(COLOR_YELLOW)ERROR: Docker Compose not found$(COLOR_RESET)\n"; exit 1; }
+	@printf "$(COLOR_GREEN)[OK] All dependencies found$(COLOR_RESET)\n"
+
+.PHONY: deps
+deps: ## Install project dependencies
+	@printf "$(COLOR_BOLD)Installing dependencies...$(COLOR_RESET)\n"
+	# Add dependency installation commands here (pip install, npm install, etc.)
+	@printf "$(COLOR_GREEN)[OK] Dependencies installed$(COLOR_RESET)\n"
+
+##@ Build
+
+.PHONY: build
+build: check-deps ## Build the project
+	@printf "$(COLOR_BOLD)Building project...$(COLOR_RESET)\n"
+	# Add build commands here
+	@printf "$(COLOR_GREEN)[OK] Build complete$(COLOR_RESET)\n"
+
+##@ Test
+
+.PHONY: test
+test: ## Run all tests
+	@printf "$(COLOR_BOLD)Running tests...$(COLOR_RESET)\n"
+	# Add test commands here (pytest, go test, npm test, etc.)
+	@printf "$(COLOR_GREEN)[OK] Tests passed$(COLOR_RESET)\n"
+
+.PHONY: test-unit
+test-unit: ## Run unit tests only
+	@printf "$(COLOR_BOLD)Running unit tests...$(COLOR_RESET)\n"
+	# Add unit test commands here
+	@printf "$(COLOR_GREEN)[OK] Unit tests passed$(COLOR_RESET)\n"
+
+.PHONY: test-integration
+test-integration: ## Run integration tests
+	@printf "$(COLOR_BOLD)Running integration tests...$(COLOR_RESET)\n"
+	# Add integration test commands here
+	@printf "$(COLOR_GREEN)[OK] Integration tests passed$(COLOR_RESET)\n"
+
+##@ Docker
+
+.PHONY: docker-build
+docker-build: ## Build Docker image
+	@printf "$(COLOR_BOLD)Building Docker image...$(COLOR_RESET)\n"
+	docker build -t $(REGISTRY)/$(APP_NAME):$(VERSION) .
+	@printf "$(COLOR_GREEN)[OK] Image built: $(REGISTRY)/$(APP_NAME):$(VERSION)$(COLOR_RESET)\n"
+
+.PHONY: docker-push
+docker-push: docker-build ## Push Docker image to registry
+	@printf "$(COLOR_BOLD)Pushing Docker image...$(COLOR_RESET)\n"
+	docker push $(REGISTRY)/$(APP_NAME):$(VERSION)
+	@printf "$(COLOR_GREEN)[OK] Image pushed$(COLOR_RESET)\n"
+
+.PHONY: up
+up: check-deps ## Start containers
+	@printf "$(COLOR_BOLD)Starting containers...$(COLOR_RESET)\n"
+	$(DOCKER_COMPOSE) up -d
+	@printf "$(COLOR_GREEN)[OK] Containers started$(COLOR_RESET)\n"
+
+.PHONY: down
+down: ## Stop containers
+	@printf "$(COLOR_BOLD)Stopping containers...$(COLOR_RESET)\n"
+	$(DOCKER_COMPOSE) down
+	@printf "$(COLOR_GREEN)[OK] Containers stopped$(COLOR_RESET)\n"
+
+.PHONY: logs
+logs: ## Show container logs
+	$(DOCKER_COMPOSE) logs -f
+
+.PHONY: status
+status: ## Show container status
+	@docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+.PHONY: shell
+shell: ## Interactive shell in container
+	docker exec -it $(CONTAINER_NAME) bash
+
+##@ Deployment
+
+.PHONY: deploy
+deploy: ## Deploy to default environment
+	@printf "$(COLOR_BOLD)Deploying...$(COLOR_RESET)\n"
+	# Add deployment commands here
+	@printf "$(COLOR_GREEN)[OK] Deployed$(COLOR_RESET)\n"
+
+.PHONY: deploy-dev
+deploy-dev: ## Deploy to development environment
+	@printf "$(COLOR_BOLD)Deploying to dev...$(COLOR_RESET)\n"
+	# Add dev deployment commands here
+	@printf "$(COLOR_GREEN)[OK] Deployed to dev$(COLOR_RESET)\n"
+
+.PHONY: deploy-prod
+deploy-prod: ## Deploy to production environment
+	@printf "$(COLOR_BOLD)Deploying to prod...$(COLOR_RESET)\n"
+	# Add prod deployment commands here
+	@printf "$(COLOR_GREEN)[OK] Deployed to prod$(COLOR_RESET)\n"
+
+##@ Utilities
+
+.PHONY: version
+version: ## Show version information
+	@printf "$(COLOR_BOLD)Version Information:$(COLOR_RESET)\n"
+	@printf "  App:    $(APP_NAME)\n"
+	@printf "  Version: $(VERSION)\n"
+	@docker --version 2>/dev/null || printf "  Docker: not found\n"
+	@$(DOCKER_COMPOSE) version 2>/dev/null || printf "  Docker Compose: not found\n"
+
+.PHONY: clean
+clean: ## Remove all build artifacts
+	@printf "$(COLOR_BOLD)Cleaning build artifacts...$(COLOR_RESET)\n"
+	# Add cleanup commands here (rm -rf bin/, rm -rf dist/, etc.)
+	@printf "$(COLOR_GREEN)[OK] Cleanup complete$(COLOR_RESET)\n"
+
+.PHONY: lint
+lint: ## Run linters
+	@printf "$(COLOR_BOLD)Running linters...$(COLOR_RESET)\n"
+	# Add linter commands here (golangci-lint, pylint, eslint, etc.)
+	@printf "$(COLOR_GREEN)[OK] Linting complete$(COLOR_RESET)\n"
+
+.PHONY: format
+format: ## Format source code
+	@printf "$(COLOR_BOLD)Formatting code...$(COLOR_RESET)\n"
+	# Add formatter commands here (gofmt, black, prettier, etc.)
+	@printf "$(COLOR_GREEN)[OK] Formatting complete$(COLOR_RESET)\n"
