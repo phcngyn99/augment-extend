@@ -358,7 +358,7 @@ Show output, verify 0 failures
 - Cleanup
 - **Skill: 10/15**
 
-**Summary: Used 10/15 skills ✓**
+**Summary: Used 10/15 skills (67%)**
 
 ### Phase 7: Post-Merge (ALL flows if PR feedback)
 
@@ -370,7 +370,7 @@ Show output, verify 0 failures
 - Update PR
 - **Skill: 11/15**
 
-**Total with PR feedback: 11/15 skills (73%) ✓**
+**Total with PR feedback: 11/15 skills (73%)**
 
 ## Flow-Specific Skill Usage
 
@@ -469,7 +469,7 @@ Agent: Analyzing... "fix", "bug" detected
        → Bug Fix Flow (10-11 skills)
 
 Execution:
-1. using-superpowers (governance) ✓
+1. using-superpowers (governance)
 2. systematic-debugging
    - Reproduce bug
    - Root cause: missing await on auth check
@@ -484,16 +484,16 @@ Execution:
    - Task 2: Add await to auth middleware
    - Task 3: Add integration test for full redirect flow
    - Task 4: Add regression test for this specific bug
-5. using-git-worktrees (.worktrees/fix-login-redirect) ✓
+5. using-git-worktrees (.worktrees/fix-login-redirect)
 6. subagent-driven-dev
-   - Task 1: TDD (RED → GREEN → REFACTOR) ✓
-   - Task 2: TDD ✓
-   - Task 3: TDD ✓
-   - Task 4: TDD ✓
-7. verification (full suite + manual smoke) ✓
-8. requesting-review (code-reviewer found 1 edge case) ✓
-9. finishing-branch (push+PR) ✓
-10. receiving-review (teammate approved) ✓
+   - Task 1: TDD (RED → GREEN → REFACTOR)
+   - Task 2: TDD
+   - Task 3: TDD
+   - Task 4: TDD
+7. verification (full suite + manual smoke)
+8. requesting-review (code-reviewer found 1 edge case)
+9. finishing-branch (push+PR)
+10. receiving-review (teammate approved)
 
 Total: 10/15 skills (67%)
 ```
@@ -507,7 +507,7 @@ Agent: Analyzing... "add" detected
        → Feature Development Flow (10-11 skills)
 
 Execution:
-1. using-superpowers ✓
+1. using-superpowers
 2. brainstorming
    - Asks: SMS, email, or authenticator app?
    - User: authenticator app
@@ -515,16 +515,16 @@ Execution:
    - Recommends: TOTP (standard)
    - Design: QR code setup, 6-digit code, backup codes
 3. writing-plans (15 tasks with comprehensive tests)
-4. using-git-worktrees (.worktrees/2fa) ✓
-5. systematic-debugging (pre-verify auth system clean) ✓
-6. subagent-driven-dev (15 tasks, each with TDD + reviews) ✓
+4. using-git-worktrees (.worktrees/2fa)
+5. systematic-debugging (pre-verify auth system clean)
+6. subagent-driven-dev (15 tasks, each with TDD + reviews)
 7. verification
    - 47 tests (unit + integration + E2E)
    - Security tests (replay attack, timing attack)
    - Coverage: 94%
-8. requesting-review ✓
-9. finishing-branch (push+PR) ✓
-10. receiving-review (PR feedback on backup codes) ✓
+8. requesting-review
+9. finishing-branch (push+PR)
+10. receiving-review (PR feedback on backup codes)
 
 Total: 10/15 skills (67%)
 ```
@@ -538,22 +538,22 @@ Agent: Analyzing... "5 independent" detected
        → Parallel Work Flow (10-11 skills)
 
 Execution:
-1. using-superpowers ✓
-2. systematic-debugging (identify all 5 bugs) ✓
-3. brainstorming (strategy: parallel agents) ✓
-4. writing-plans (plan per bug) ✓
-5. using-git-worktrees (.worktrees/multi-bugfix) ✓
+1. using-superpowers
+2. systematic-debugging (identify all 5 bugs)
+3. brainstorming (strategy: parallel agents)
+4. writing-plans (plan per bug)
+5. using-git-worktrees (.worktrees/multi-bugfix)
 6. dispatching-parallel-agents
    - Agent 1: auth bug (TDD)
    - Agent 2: payment bug (TDD)
    - Agent 3: cart bug (TDD)
    - Agent 4: search bug (TDD)
    - Agent 5: profile bug (TDD)
-   - All run simultaneously ✓
-7. verification (full suite all modules) ✓
-8. requesting-review ✓
-9. finishing-branch ✓
-10. receiving-review ✓
+   - All run simultaneously
+7. verification (full suite all modules)
+8. requesting-review
+9. finishing-branch
+10. receiving-review
 
 Total: 10/15 skills (67%)
 ```

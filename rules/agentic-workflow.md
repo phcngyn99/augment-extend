@@ -23,10 +23,10 @@ Operating principles for AI-assisted engineering. For deep patterns, invoke `age
 - Clear done condition
 
 **Examples:**
-- ✓ "Add email validation to signup form"
-- ✓ "Fix race condition in payment flow"
-- ✗ "Build authentication system" (too large)
-- ✗ "Improve performance" (no done condition)
+- PASS: "Add email validation to signup form"
+- PASS: "Fix race condition in payment flow"
+- FAIL: "Build authentication system" (too large)
+- FAIL: "Improve performance" (no done condition)
 
 ## 3. Model Routing by Complexity
 

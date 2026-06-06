@@ -4,6 +4,17 @@ Notable changes.
 
 ---
 
+## 2026-06-06
+
+### Code Quality
+- Removed all emojis from tracked files
+- `README.md` — replaced checkmark/lock with plain text
+- `skills/ecc/ck/SKILL.md` — checkmark/cross → GOOD/BAD
+- `skills/ui-ux-pro-max/SKILL.md` — removed emoji from table
+- Complies with `rules/caveman-activate.md` (no emojis in conversation text)
+
+---
+
 ## 2026-06-05
 
 ### Superpowers Workflow Orchestrator
