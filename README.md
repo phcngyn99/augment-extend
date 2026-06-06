@@ -59,9 +59,38 @@ auggie
 
 ## Update
 
+**Safe workflow — personal data never syncs:**
+
 ```bash
 cd ~/.augment && git pull
 ```
+
+Your local sessions, settings.json, checkpoints stay intact. Only shared config updates.
+
+### What Gets Synced (Tracked)
+
+✅ **Shared config:**
+- `rules/` — Auto rules
+- `skills/` — All skills
+- `agents/` — All agents
+- `docs/` — Documentation
+- `scripts/` — Setup scripts
+- `settings.json.template` — Machine setup template
+- `install.sh`, `README.md`, `CATALOG.md`, `CHANGELOG.md`
+
+### What Stays Local (Ignored)
+
+🔒 **Personal data:**
+- `settings.json` — Machine-specific paths
+- `sessions/`, `session.json*` — Conversation data
+- `checkpoint-documents/` — Editor state
+- `prompt-history.jsonl` — Session logs
+- `projects/`, `ck/contexts/` — Project memory
+- `task-storage/` — Task state
+- `.codegraph/`, `skill-library/` — Local caches
+- `binaries/` — Platform-specific executables
+
+**You can edit local files freely — git won't touch them.**
 
 ## What You Get
 
