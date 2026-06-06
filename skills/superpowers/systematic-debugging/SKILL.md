@@ -49,6 +49,14 @@ You MUST complete each phase before proceeding to the next.
 
 ### Phase 1: Root Cause Investigation
 
+### CodeGraph Usage (When Available)
+
+**IF .codegraph/ exists: Use CodeGraph tools for semantic analysis. Treat returned source as already Read — no re-verification with grep/view.**
+
+**IF missing:** Announce "CodeGraph not indexed — recommend `codegraph init -i`" and use fallback tools.
+
+---
+
 **BEFORE attempting ANY fix:**
 
 1. **Read Error Messages Carefully**
@@ -73,24 +81,17 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN system has multiple components (CI → build → signing, API → service → database):**
 
-   **IF .codegraph/ exists (use semantic intelligence first):**
+   **Use CodeGraph (if available, see Phase 1 header):**
    ```
-   1. codegraph_impact on the failing symbol/function
-      → See full blast radius of what's affected
+   1. codegraph_impact on failing symbol → full blast radius
+   2. codegraph_callers on entry point → trace call paths
+   3. codegraph_callees from entry point → downstream calls
+   4. codegraph_explore with component boundary symbols → full flow in one call
 
-   2. codegraph_callers on entry point
-      → Trace who calls into this component
-
-   3. codegraph_callees from entry point
-      → See what the component calls downstream
-
-   4. codegraph_explore with component boundary symbols
-      → Get full flow + relationship map in one call
-
-   THEN add targeted instrumentation ONLY at gaps CodeGraph didn't cover
+   THEN add targeted instrumentation at gaps CodeGraph didn't cover
    ```
 
-   **OTHERWISE (no CodeGraph), add diagnostic instrumentation:**
+   **Fallback (no CodeGraph):**
    ```
    For EACH component boundary:
      - Log what data enters component
@@ -128,26 +129,17 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN error is deep in call stack:**
 
-   **IF .codegraph/ exists:**
+   **Use CodeGraph (if available, see Phase 1 header):**
    ```
-   1. codegraph_callers symbol="failingFunction"
-      → Trace backward from error site
-      → See ALL call paths leading here
-
-   2. codegraph_impact symbol="failingFunction" depth=2
-      → See what else this affects
-
-   3. codegraph_explore with symbols from error stack trace
-      → Reconstruct full flow in one call
+   1. codegraph_callers symbol="failingFunction" → trace backward, see ALL call paths
+   2. codegraph_impact symbol="failingFunction" depth=2 → what else affected
+   3. codegraph_explore with symbols from error stack → reconstruct full flow
       → Surfaces dynamic-dispatch hops (callbacks, React re-render)
-
-   4. Check returned source — treat as already Read
-      → Don't re-verify with grep
    ```
 
-   **OTHERWISE, manual tracing:**
+   **Fallback (no CodeGraph) — manual tracing:**
 
-   See `root-cause-tracing.md` in this directory for the complete backward tracing technique.
+   See `root-cause-tracing.md` for complete backward tracing technique.
 
    **Quick version:**
    - Where does bad value originate?

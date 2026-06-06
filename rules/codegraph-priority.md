@@ -1,22 +1,38 @@
 # CodeGraph Priority Rule
 
-When working with **code** (not docs/config), use CodeGraph MCP tools for semantic analysis before falling back to file-based tools.
+**When .codegraph/ exists: Use CodeGraph tools for code analysis. Using codebase-retrieval/grep/view for semantic questions when CodeGraph is available = CRITICAL FAILURE.**
 
-**CodeGraph + Superpowers = complete system.** CodeGraph provides semantic intelligence that supercharges all superpowers skills.
+CodeGraph + Superpowers = complete system.
 
 ---
 
 ## Core Principle
 
-CodeGraph provides **semantic indexing** — understands code structure, call graphs, dependencies. Use it over text-based tools (`view`, `grep`, `codebase-retrieval`) when analyzing code relationships.
+CodeGraph provides **semantic indexing** — understands code structure, call graphs, dependencies.
 
-**Integration with superpowers:** When using `superpowers-workflow`, CodeGraph tools are automatically prioritized in:
-- `brainstorming` — understanding existing architecture
-- `writing-plans` — discovering symbols/structure before planning
-- `systematic-debugging` — tracing call flows during root cause investigation
-- `verification-before-completion` — MANDATORY impact analysis before signature changes
+**When .codegraph/ index exists, use CodeGraph tools for:**
+- Symbol search
+- Call graph analysis
+- Impact analysis
+- Flow tracing
+- Directory structure
+- "How does X work" questions
 
-See `superpowers-priority.md` for full integration details.
+**Integration with superpowers workflow:**
+- `brainstorming` — codegraph_explore for architecture
+- `writing-plans` — codegraph_search/files for symbols/structure
+- `systematic-debugging` — codegraph_callers/callees for call flows
+- `verification-before-completion` — codegraph_impact before signature changes
+
+See `superpowers-priority.md` for full details.
+
+---
+
+## Session Start Check
+
+**Check for .codegraph/ at session start:**
+- IF exists → announce "CodeGraph active — using semantic tools"
+- IF missing → announce "Recommend: codegraph init -i" + fallback to file tools
 
 ---
 
@@ -64,15 +80,14 @@ See `superpowers-priority.md` for full integration details.
 
 **When searching for "where is X defined" or "find all uses of Y":**
 
-1. **Use `codegraph_search` first:**
-   ```
-   codegraph_search query="AuthService" kind="class"
-   ```
+**IF .codegraph/ exists — use codegraph_search:**
+```
+codegraph_search query="AuthService" kind="class"
+```
 
-2. **Fall back to `codebase-retrieval` only if:**
-   - Symbol not found (not indexed)
-   - Searching prose/comments (not code structure)
-   - Repo not initialized with CodeGraph
+**Fallback (no .codegraph/):**
+- Announce: "CodeGraph not indexed. Recommend: codegraph init -i"
+- Use: codebase-retrieval
 
 **Why:** Semantic search finds symbols even when names don't match exactly.
 

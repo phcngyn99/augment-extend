@@ -119,9 +119,11 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 
 ## Prompt Templates
 
-- `./implementer-prompt.md` - Dispatch implementer subagent
-- `./spec-reviewer-prompt.md` - Dispatch spec compliance reviewer subagent
-- `./code-quality-reviewer-prompt.md` - Dispatch code quality reviewer subagent
+**Agent naming convention:** `superpowers-<role>-task-N`
+
+- `./implementer-prompt.md` - Dispatch implementer subagent (name: `superpowers-implementer-task-N`)
+- `./spec-reviewer-prompt.md` - Dispatch spec compliance reviewer subagent (name: `superpowers-spec-reviewer-task-N`)
+- `./code-quality-reviewer-prompt.md` - Dispatch code quality reviewer subagent (uses `superpowers:code-reviewer` agent type)
 
 ## Example Workflow
 
@@ -135,7 +137,7 @@ You: I'm using Subagent-Driven Development to execute this plan.
 Task 1: Hook installation script
 
 [Get Task 1 text and context (already extracted)]
-[Dispatch implementation subagent with full task text + context]
+[Dispatch superpowers-implementer-task-1 with full task text + context]
 
 Implementer: "Before I begin - should the hook be installed at user or system level?"
 
@@ -148,10 +150,10 @@ Implementer: "Got it. Implementing now..."
   - Self-review: Found I missed --force flag, added it
   - Committed
 
-[Dispatch spec compliance reviewer]
+[Dispatch superpowers-spec-reviewer-task-1]
 Spec reviewer:  Spec compliant - all requirements met, nothing extra
 
-[Get git SHAs, dispatch code quality reviewer]
+[Get git SHAs, dispatch superpowers:code-reviewer]
 Code reviewer: Strengths: Good test coverage, clean. Issues: None. Approved.
 
 [Mark Task 1 complete]
@@ -159,7 +161,7 @@ Code reviewer: Strengths: Good test coverage, clean. Issues: None. Approved.
 Task 2: Recovery modes
 
 [Get Task 2 text and context (already extracted)]
-[Dispatch implementation subagent with full task text + context]
+[Dispatch superpowers-implementer-task-2 with full task text + context]
 
 Implementer: [No questions, proceeds]
 Implementer:
@@ -168,7 +170,7 @@ Implementer:
   - Self-review: All good
   - Committed
 
-[Dispatch spec compliance reviewer]
+[Dispatch superpowers-spec-reviewer-task-2]
 Spec reviewer:  Issues:
   - Missing: Progress reporting (spec says "report every 100 items")
   - Extra: Added --json flag (not requested)
@@ -179,7 +181,7 @@ Implementer: Removed --json flag, added progress reporting
 [Spec reviewer reviews again]
 Spec reviewer:  Spec compliant now
 
-[Dispatch code quality reviewer]
+[Dispatch superpowers:code-reviewer]
 Code reviewer: Strengths: Solid. Issues (Important): Magic number (100)
 
 [Implementer fixes]
@@ -193,7 +195,7 @@ Code reviewer:  Approved
 ...
 
 [After all tasks]
-[Dispatch final code-reviewer]
+[Dispatch superpowers:code-reviewer for final review]
 Final reviewer: All requirements met, ready to merge
 
 Done!
