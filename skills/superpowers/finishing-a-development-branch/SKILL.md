@@ -15,10 +15,42 @@ Guide completion of development work by presenting clear options and handling ch
 
 ## The Process
 
-### Step 1: Verify Tests
+### Step 1: Pre-Flight Checks
 
-**Before presenting options, verify tests pass:**
+**1.1 Emoji Check (MANDATORY)**
 
+Scan changed files for emojis:
+```bash
+git diff --name-only $(git merge-base HEAD main)..HEAD | \
+  xargs grep -n '[😀-🙏🌀-🗿🚀-🛿🇦-🇿✅🔒❌✓]' 2>/dev/null || echo "Clean"
+```
+
+**If emojis found:**
+```
+Found emojis in changed files. Dispatching cleanup agent...
+```
+
+Dispatch `sub-agent-code` with instruction:
+```
+Remove all emojis from files in this branch's diff (vs main).
+Replace with plain text equivalents:
+- checkmark/cross → PASS/FAIL or GOOD/BAD
+- lock/key → "secure" or plain text
+- All others → descriptive text
+
+DO NOT touch code logic, only replace emoji characters.
+```
+
+Wait for completion. Re-scan. If still found, fail:
+```
+Emoji cleanup failed. Cannot proceed - emojis violate rules/caveman-no-fucking-emoji.md
+```
+
+**If clean:** Continue to 1.2.
+
+**1.2 Test Verification**
+
+Verify tests pass:
 ```bash
 # Run project's test suite
 npm test / cargo test / pytest / go test ./...
@@ -179,12 +211,14 @@ git worktree remove <worktree-path>
 ## Red Flags
 
 **Never:**
+- Proceed with emojis in changed files
 - Proceed with failing tests
 - Merge without verifying tests on result
 - Delete work without confirmation
 - Force-push without explicit request
 
 **Always:**
+- Check for emojis FIRST (before tests)
 - Verify tests before offering options
 - Present exactly 4 options
 - Get typed confirmation for Option 4
