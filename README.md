@@ -92,6 +92,36 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 
 **You can edit local files freely — git won't touch them.**
 
+## Troubleshooting
+
+### Install Failed at Git Setup
+
+If install copied files but git remote failed:
+
+```bash
+# Already in cloned repo
+git pull
+
+# Copy .gitignore to ~/.augment
+cp .gitignore ~/.augment/
+
+# Fix git remote
+cd ~/.augment
+git remote set-url origin git@github.com:phcngyn99/augment-extend.git
+# If no remote exists: git remote add origin git@github.com:phcngyn99/augment-extend.git
+
+# Verify pull works
+git pull
+
+# Delete cloned repo
+cd ..
+rm -rf augment-extend
+```
+
+Keeps existing credentials/sessions intact.
+
+---
+
 ## What You Get
 
 **Rules (11):** caveman, superpowers-priority, session-lifecycle, coding-principles, karpathy, security, agentic-workflow, codegraph-priority, context-md, research-delegation, honest-feedback
