@@ -9,12 +9,24 @@
 - **CodeGraph** (required — used by codegraph-priority rule)
 
 **Install CodeGraph first:**
+
+macOS / Linux:
 ```bash
-git clone https://github.com/colbymchenry/codegraph
-cd codegraph
-cargo install --path .
-# Verify: codegraph --version
+curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh
 ```
+
+Windows (PowerShell):
+```bash
+irm https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.ps1 | iex
+```
+
+**Then initialize each project:**
+```bash
+cd your-project
+codegraph init -i
+```
+
+See [CodeGraph docs](https://github.com/colbymchenry/codegraph) for details.
 
 **Then install Augment config:**
 ```bash
