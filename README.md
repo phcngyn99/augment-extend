@@ -4,7 +4,9 @@
 
 ## Install (Machine with Auggie)
 
-**Prerequisites:** Auggie installed, `~/.augment` exists.
+**Prerequisites:**
+- Auggie installed, `~/.augment` exists
+- CodeGraph installed (optional but recommended — used by codegraph-priority rule)
 
 ```bash
 # 1. Init git in ~/.augment
