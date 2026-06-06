@@ -20,7 +20,6 @@ echo
 # ── Step 1: Verify we're in the cloned repo ──────────────────────────────────
 if [ ! -f "README.md" ] || [ ! -f "settings.json.template" ]; then
     echo "❌ Error: Must run from augment-extend repo directory"
-    echo "   Expected: ~/Downloads/augment-extend"
     echo "   Current: $(pwd)"
     exit 1
 fi
