@@ -41,7 +41,7 @@ mkdir -p "$TARGET_DIR"
 
 # Use rsync to copy everything except .git
 if command -v rsync >/dev/null 2>&1; then
-    rsync -av --exclude .git --exclude .gitignore . "$TARGET_DIR/"
+    rsync -av --exclude .git . "$TARGET_DIR/"
 else
     # Fallback: cp -R (less precise, may include unwanted files)
     cp -R . "$TARGET_DIR/"
