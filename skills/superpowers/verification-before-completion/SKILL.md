@@ -41,12 +41,11 @@ Skip any step = lying, not verifying
 
 **BEFORE claiming any signature/API change complete:**
 
-**IF .codegraph/ exists:**
+**IF .codegraph/ exists — use CodeGraph tools (NOT grep/codebase-retrieval):**
 
 ```
 1. codegraph_impact symbol="changedFunction" depth=2
-   → See FULL blast radius
-   → Returns all affected symbols + call paths
+   → See full blast radius (all affected symbols + call paths)
 
 2. codegraph_callers symbol="changedFunction"
    → Complete list of ALL callers
@@ -54,12 +53,13 @@ Skip any step = lying, not verifying
 
 3. Check returned analysis
    → If any caller NOT updated: NOT complete
-   → If impact radius shows unexpected affects: investigate
+   → Treat returned source as already Read
+   → If unexpected affects found: investigate
 
-NO EXCEPTIONS — run this BEFORE claiming signature changes complete
+NO EXCEPTIONS — run this BEFORE claiming complete
 ```
 
-**OTHERWISE:** Manual caller verification via grep (incomplete, easy to miss).
+**OTHERWISE:** Manual grep (incomplete, misses indirect callers).
 
 ## Common Failures
 

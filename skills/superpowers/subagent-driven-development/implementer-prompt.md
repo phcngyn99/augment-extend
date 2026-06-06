@@ -2,8 +2,11 @@
 
 Use this template when dispatching an implementer subagent.
 
+**Agent naming:** `superpowers-implementer-task-N` (e.g., `superpowers-implementer-task-1`)
+
 ```
 Task tool (general-purpose):
+  name: "superpowers-implementer-task-N"
   description: "Implement Task N: [task name]"
   prompt: |
     You are implementing Task N: [task name]
