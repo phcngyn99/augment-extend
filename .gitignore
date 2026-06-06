@@ -63,12 +63,12 @@ Thumbs.db
 .worktrees/
 
 # ── What GETS TRACKED ──────────────────────────────────────────────────────────
-# ✅ rules/                      — Auto rules
-# ✅ skills/                     — All skills
-# ✅ agents/                     — All agents
-# ✅ docs/                       — Documentation
-# ✅ scripts/                    — Setup scripts
-# ✅ settings.json.template      — Machine setup template
-# ✅ install.sh                  — Install script
-# ✅ README.md, CATALOG.md, etc. — Root docs
-# ✅ .gitignore                  — This file
+# rules/                      — Auto rules
+# skills/                     — All skills
+# agents/                     — All agents
+# docs/                       — Documentation
+# scripts/                    — Setup scripts
+# settings.json.template      — Machine setup template
+# install.sh                  — Install script
+# README.md, CATALOG.md, etc. — Root docs
+# .gitignore                  — This file
