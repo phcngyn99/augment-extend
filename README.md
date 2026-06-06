@@ -74,7 +74,7 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 - `docs/` — Documentation
 - `scripts/` — Setup scripts
 - `settings.json.template` — Machine setup template
-- `install.sh`, `README.md`, `CATALOG.md`, `CHANGELOG.md`
+- `README.md`, `CATALOG.md`, `CHANGELOG.md`
 
 ### What Stays Local (Ignored)
 
@@ -92,7 +92,7 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 
 ## What You Get
 
-**Rules (11):** caveman, superpowers-priority, session-lifecycle, coding-principles, karpathy, security, agentic-workflow, codegraph-priority, context-md, research-delegation, honest-feedback
+**Rules (11):** caveman-no-fucking-emoji, superpowers-priority, session-lifecycle, coding-principles, karpathy, security, agentic-workflow, codegraph-priority, context-md, research-delegation, honest-feedback
 
 **Skills (99):** Superpowers (16), ECC (67), Caveman (5), Custom (10), UI/UX (1)
 

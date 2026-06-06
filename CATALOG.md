@@ -189,6 +189,8 @@ python3 ~/.augment/skills/ui-ux-pro-max/scripts/search.py "fintech" --domain sty
 | `cavecrew` | Auto-triggered | Delegate to compressed sub-agents |
 | `caveman-stats` | `/caveman-stats` | Session token usage (real, not estimated) |
 
+**Note:** First 5 are in `skills/caveman*/`. Last 2 (`cavecrew`, `caveman-stats`) are in `.agents/skills/` (agent-specific directory).
+
 ---
 
 ## Custom/Matt Pocock (10 skills)
