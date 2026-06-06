@@ -31,6 +31,14 @@ auggie
 - Verifies counts (11 rules, 98 skills, 38 agents)
 - Reports success
 
+**Success criteria:**
+- ✅ Script reports "Installation successful"
+- ✅ Counts match: 11 rules, 98 skills, 38 agents
+- ✅ `~/.augment/.git` exists
+- ✅ `git remote -v` shows `phcngyn99/augment-extend`
+- ✅ `settings.json` created from template
+- ✅ `cd ~/.augment && git pull` → "Already up to date"
+
 **After install:**
 ```bash
 # Exit Auggie, delete staging repo
