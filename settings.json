@@ -1,0 +1,31 @@
+{
+  "indexingAllowDirs": [
+    "/Users/FinNguyen/Work/not-finn/augment-extend",
+    "/Users/FinNguyen/Downloads",
+    "/Users/FinNguyen/.augment",
+    "/Users/FinNguyen/Work/not-finn"
+  ],
+  "mcpServers": {
+    "codegraph": {
+      "command": "codegraph",
+      "args": [
+        "serve",
+        "--mcp"
+      ]
+    },
+    "Context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@1.0.0"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@0.1.0"
+      ]
+    }
+  }
+}

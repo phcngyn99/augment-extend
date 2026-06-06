@@ -1,0 +1,7 @@
+{
+  "accessToken": "cf318662324e35c14fc98c9fe828822ce9e11a9da118bd11ccf7c6fab1766eea",
+  "tenantURL": "https://e6.api.augmentcode.com/",
+  "scopes": [
+    "email"
+  ]
+}
