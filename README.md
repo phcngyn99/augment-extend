@@ -6,8 +6,17 @@
 
 **Prerequisites:**
 - Auggie installed, `~/.augment` exists
-- CodeGraph installed (optional but recommended — used by codegraph-priority rule)
+- **CodeGraph** (required — used by codegraph-priority rule)
 
+**Install CodeGraph first:**
+```bash
+git clone https://github.com/colbymchenry/codegraph
+cd codegraph
+cargo install --path .
+# Verify: codegraph --version
+```
+
+**Then install Augment config:**
 ```bash
 # 1. Init git in ~/.augment
 cd ~/.augment
