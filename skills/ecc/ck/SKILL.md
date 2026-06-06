@@ -104,8 +104,8 @@ Display the script's stdout confirmation verbatim.
 - All ck context (summary, left off, next steps, decisions, active files, code context, etc.)
 - Suggested skills section
 - **References to artifacts** (don't duplicate content):
-  - ✅ "See PRD in issue #42"
-  - ❌ Pasting entire PRD
+  - GOOD: "See PRD in issue #42"
+  - BAD: Pasting entire PRD
 - **Redacted sensitive data** (API keys, passwords, PII)
 - Optional focus section if user provided argument
 

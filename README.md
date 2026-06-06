@@ -67,7 +67,7 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 
 ### What Gets Synced (Tracked)
 
-✅ **Shared config:**
+**Shared config:**
 - `rules/` — Auto rules
 - `skills/` — All skills
 - `agents/` — All agents
@@ -78,7 +78,7 @@ Your local sessions, settings.json, checkpoints stay intact. Only shared config 
 
 ### What Stays Local (Ignored)
 
-🔒 **Personal data:**
+**Personal data:**
 - `settings.json` — Machine-specific paths
 - `sessions/`, `session.json*` — Conversation data
 - `checkpoint-documents/` — Editor state
