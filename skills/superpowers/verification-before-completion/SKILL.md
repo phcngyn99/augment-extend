@@ -37,9 +37,11 @@ BEFORE claiming any status or expressing satisfaction:
 Skip any step = lying, not verifying
 ```
 
-## CodeGraph Impact Analysis (MANDATORY for API changes)
+## CodeGraph Impact Analysis (MANDATORY - STRICT MODE)
 
 **BEFORE claiming any signature/API change complete:**
+
+**CodeGraph REQUIRED — workflow STOPS if missing:**
 
 **IF .codegraph/ exists — use CodeGraph tools (NOT grep/codebase-retrieval):**
 
@@ -72,7 +74,8 @@ NO EXCEPTIONS — run this BEFORE claiming complete
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
-| **Signature changed** | **codegraph_impact + all callers updated** | **Grep (misses indirect callers)** |
+| **Signature changed** | **codegraph_impact + all callers updated (MANDATORY)** | **Grep (FORBIDDEN - misses indirect callers)** |
+| **No .codegraph/** | **STOP WORKFLOW - initialize first** | **Proceeding without CodeGraph** |
 
 ## Red Flags - STOP
 

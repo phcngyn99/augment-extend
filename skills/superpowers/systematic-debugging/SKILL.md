@@ -49,11 +49,11 @@ You MUST complete each phase before proceeding to the next.
 
 ### Phase 1: Root Cause Investigation
 
-### CodeGraph Usage (When Available)
+### CodeGraph Usage (MANDATORY - STRICT MODE)
 
 **IF .codegraph/ exists: Use CodeGraph tools for semantic analysis. Treat returned source as already Read — no re-verification with grep/view.**
 
-**IF missing:** Announce "CodeGraph not indexed — recommend `codegraph init -i`" and use fallback tools.
+**IF missing — STOP WORKFLOW:** Announce "CodeGraph REQUIRED for superpowers workflows. Run: `codegraph init -i`" — DO NOT use fallback tools.
 
 ---
 
@@ -81,7 +81,7 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN system has multiple components (CI → build → signing, API → service → database):**
 
-   **Use CodeGraph (if available, see Phase 1 header):**
+   **Use CodeGraph (MANDATORY, see Phase 1 header):**
    ```
    1. codegraph_impact on failing symbol → full blast radius
    2. codegraph_callers on entry point → trace call paths
@@ -91,9 +91,10 @@ You MUST complete each phase before proceeding to the next.
    THEN add targeted instrumentation at gaps CodeGraph didn't cover
    ```
 
-   **Fallback (no CodeGraph):**
+   **No CodeGraph — STOP WORKFLOW:**
    ```
-   For EACH component boundary:
+   Announce: "CodeGraph REQUIRED. Run: codegraph init -i"
+   DO NOT proceed with manual component tracing
      - Log what data enters component
      - Log what data exits component
      - Verify environment/config propagation
@@ -129,7 +130,7 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN error is deep in call stack:**
 
-   **Use CodeGraph (if available, see Phase 1 header):**
+   **Use CodeGraph (MANDATORY, see Phase 1 header):**
    ```
    1. codegraph_callers symbol="failingFunction" → trace backward, see ALL call paths
    2. codegraph_impact symbol="failingFunction" depth=2 → what else affected
@@ -137,9 +138,10 @@ You MUST complete each phase before proceeding to the next.
       → Surfaces dynamic-dispatch hops (callbacks, React re-render)
    ```
 
-   **Fallback (no CodeGraph) — manual tracing:**
+   **No CodeGraph — STOP WORKFLOW:**
 
-   See `root-cause-tracing.md` for complete backward tracing technique.
+   Announce: "CodeGraph REQUIRED for superpowers workflows. Run: `codegraph init -i`"
+   DO NOT proceed with manual tracing.
 
    **Quick version:**
    - Where does bad value originate?
