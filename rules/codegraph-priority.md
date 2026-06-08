@@ -1,6 +1,10 @@
 # CodeGraph Priority Rule
 
+**STRICT MODE: CodeGraph REQUIRED for all superpowers workflows. No fallback allowed.**
+
 **When .codegraph/ exists: Use CodeGraph tools for code analysis. Using codebase-retrieval/grep/view for semantic questions when CodeGraph is available = CRITICAL FAILURE.**
+
+**When .codegraph/ missing: STOP. Require user to run `codegraph init -i` before proceeding with superpowers workflows.**
 
 CodeGraph + Superpowers = complete system.
 
@@ -28,11 +32,14 @@ See `superpowers-priority.md` for full details.
 
 ---
 
-## Session Start Check
+## Session Start Check (STRICT MODE)
 
 **Check for .codegraph/ at session start:**
 - IF exists → announce "CodeGraph active — using semantic tools"
-- IF missing → announce "Recommend: codegraph init -i" + fallback to file tools
+- IF missing → **BLOCK superpowers workflows**
+  - Announce: "CodeGraph REQUIRED for superpowers. Run: `codegraph init -i`"
+  - Ask user to initialize before proceeding
+  - NO fallback to file tools for superpowers workflows
 
 ---
 
@@ -85,11 +92,12 @@ See `superpowers-priority.md` for full details.
 codegraph_search query="AuthService" kind="class"
 ```
 
-**Fallback (no .codegraph/):**
-- Announce: "CodeGraph not indexed. Recommend: codegraph init -i"
-- Use: codebase-retrieval
+**STRICT MODE (no .codegraph/):**
+- STOP workflow
+- Announce: "CodeGraph REQUIRED for superpowers. Run: `codegraph init -i` before continuing"
+- DO NOT proceed with codebase-retrieval fallback
 
-**Why:** Semantic search finds symbols even when names don't match exactly.
+**Why:** Semantic search finds symbols even when names don't match exactly. Fallback misses indirect dependencies.
 
 ---
 
@@ -138,15 +146,16 @@ When using CodeGraph tools proactively (not user-requested):
 
 ---
 
-## Index Requirement
+## Index Requirement (STRICT MODE)
 
 CodeGraph requires `.codegraph/` index. If missing:
 
-1. Announce: `CodeGraph not indexed — run: codegraph init -i`
-2. Fall back to file tools
-3. Suggest indexing for future sessions
+1. Announce: `CodeGraph REQUIRED for superpowers workflows — run: codegraph init -i`
+2. **BLOCK superpowers workflows until indexed**
+3. Ask user to initialize now
+4. NO fallback to file tools for superpowers workflows
 
-Don't fail silently — tell user CodeGraph available but not set up.
+Non-superpowers workflows can still use file tools.
 
 ---
 

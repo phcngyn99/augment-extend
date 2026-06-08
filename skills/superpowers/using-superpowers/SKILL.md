@@ -1,7 +1,11 @@
 ---
 name: using-superpowers
-description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions
+description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions. Also contains the universal sequence for all coding work (7 phases, 10-11 skills minimum).
 ---
+
+# Using Superpowers
+
+**WHEN THIS SKILL IS INVOKED: ALWAYS print the Universal Sequence section (starting at "# Universal Sequence" below) in your response after explaining skill governance.**
 
 <SUBAGENT-STOP>
 If you were dispatched as a subagent to execute a specific task, skip this skill.
@@ -43,17 +47,22 @@ Skills use Augment Agent tool names. Non-CC platforms: see `references/copilot-t
 
 **IF .codegraph/ directory exists in project root:**
 
-CodeGraph provides semantic code intelligence via MCP. Use CodeGraph tools BEFORE file reads for structural questions:
+CodeGraph provides semantic code intelligence via **MCP tools** (use MCP tool invocation, NOT CLI commands). Use BEFORE file reads for structural questions:
 
-| Intent | Use This (CodeGraph) | NOT That (file-based) |
-|--------|----------------------|----------------------|
-| "How does X work" / flow questions | codegraph_explore | view + grep loop |
-| Find symbol by name | codegraph_search | codebase-retrieval |
-| Who calls this function | codegraph_callers | manual grep |
-| What this calls | codegraph_callees | manual grep |
-| Impact before edit | codegraph_impact | guess + hope |
-| Get full source + all overloads | codegraph_node | view (misses overloads) |
-| File structure | codegraph_files | view directory |
+| Intent | MCP Tool (invoke via tool system) | NOT These |
+|--------|-----------------------------------|-----------|
+| "How does X work" / flow questions | `codegraph_explore` | CLI: `codegraph query` OR file tools: `view + grep` |
+| Find symbol by name | `codegraph_search` | CLI: `codegraph query` OR file tools: `codebase-retrieval` |
+| Who calls this function | `codegraph_callers` | CLI: `codegraph callers` OR `manual grep` |
+| What this calls | `codegraph_callees` | CLI: `codegraph callees` OR `manual grep` |
+| Impact before edit | `codegraph_impact` | CLI: `codegraph impact` OR guessing |
+| Get full source + all overloads | `codegraph_node` | CLI command OR `view` (misses overloads) |
+| File structure | `codegraph_files` | CLI: `codegraph files` OR `view directory` |
+| Index health + stats | `codegraph_status` | CLI: `codegraph status` |
+
+**CRITICAL:** These are **MCP tool names** available when CodeGraph MCP server is running. Use your platform's MCP tool invocation mechanism, NOT shell commands like `codegraph query` or `codegraph files <path>`.
+
+**Reference:** See `references/codegraph-usage.md` for full CLI vs MCP tool documentation.
 
 **Key principle:** CodeGraph answers semantic questions in 1 call vs 10+ Read/Grep cycles. Treat returned source as already Read — don't re-verify with grep.
 
@@ -137,3 +146,54 @@ The skill itself tells you which.
 ## User Instructions
 
 Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.
+
+---
+
+# Universal Sequence
+
+All coding work follows this 7-phase structure. Phases 2-3-5-6 identical across all work types.
+
+## Phase 0: Detection
+- `using-superpowers` — verify compliance
+
+## Phase 1: Investigation (bugs/refactors only)
+- `systematic-debugging` — root cause
+
+## Phase 2: Design (ALL — MANDATORY)
+- `brainstorming` — explore options, save spec to `docs/superpowers/specs/YYYY-MM-DD-topic-design.md`
+- `writing-plans` — bite-sized tasks, save plan to `<project-root>/docs/superpowers/plans/YYYY-MM-DD-topic.md`
+- **Checkpoint:** "Design complete. Continue or pause for review?"
+
+## Phase 3: Setup (ALL — MANDATORY)
+- `using-git-worktrees` — isolated workspace + branch
+
+## Phase 4: Execute (ALL)
+- `subagent-driven-development` OR `dispatching-parallel-agents` — orchestrate tasks
+  - `test-driven-development` — RED → GREEN → REFACTOR per task
+  - Spec reviewer + code quality reviewer per task
+
+## Phase 5: Verification (ALL — MANDATORY)
+- `verification-before-completion` — full suite + linting + types + ≥90% coverage + smoke test
+- `requesting-code-review` — dispatch reviewer, fix Critical/Important
+
+## Phase 6: Finish (ALL — MANDATORY)
+- `finishing-a-development-branch` — re-verify → merge/PR/keep/discard
+- **10/15 skills (67%)**
+
+## Phase 7: Post-Merge (if PR feedback)
+- `receiving-code-review` — technical evaluation → verify → TDD fixes → update PR
+- **11/15 skills (73%)**
+
+---
+
+**Testing mandate (all phases):**
+- 5+ tests per task minimum
+- 20+ tests per feature
+- 90%+ coverage target
+- Unit + integration + edge + error + regression
+- Full suite GREEN before merge
+
+**Invariants:**
+- Phases 2-3-5-6 identical all work types
+- Always ≥10 skills
+- No skipping design, isolation, verification, or review

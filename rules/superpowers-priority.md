@@ -12,7 +12,7 @@ Before responding to ANY user request, check this list. If ANY condition matches
 
 **PRIMARY (use this for full workflows):**
 
-- [ ] **ANY coding task (feature/bug/refactor/investigation/multi-task)** → `superpowers-workflow` (auto-routes to appropriate 10-11 skill flow based on work type)
+- [ ] **ANY coding task** — follow universal sequence in `using-superpowers` skill (7 phases, 10-11 skills minimum)
 
 **INDIVIDUAL (use only if user explicitly requests specific skill, or workflow not applicable):**
 
@@ -39,7 +39,7 @@ Before responding to ANY user request, check this list. If ANY condition matches
 Before implementing, debugging, planning, or reviewing:
 
 1. Check mandatory activation checklist above
-2. **DEFAULT: For any coding task, use `superpowers-workflow` first** — it auto-routes to the right 10-11 skill flow
+2. **DEFAULT: For any coding task, follow universal sequence** (see `using-superpowers` skill for 7-phase structure)
 3. If user explicitly requests individual skill, use that specific skill
 4. If no checklist match, check if superpowers has a skill for this task
 5. If yes, use superpowers skill/agent — NEVER use ECC equivalent
@@ -48,7 +48,7 @@ Before implementing, debugging, planning, or reviewing:
 
 **Absolute rule: When superpowers and ECC both cover a domain, ALWAYS use superpowers. Zero exceptions.**
 
-**New default: superpowers-workflow is the primary entry point for all coding work. It includes all individual skills in the optimal sequence.**
+**Universal sequence is the primary workflow for all coding work. Phases 2-3-5-6 identical across all work types.**
 
 ## Agent Priority
 

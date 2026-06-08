@@ -21,14 +21,14 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 **Project-aware plan location (MANDATORY):**
 
-1. **Check if .codegraph/ exists in current workspace:**
-   - IF yes: Use `codegraph_files` to search for existing `docs/superpowers/plans` directory
+1. **Check if .codegraph/ exists in current workspace (MANDATORY):**
+   - IF yes: Use **MCP tool** `codegraph_files` to search for existing `docs/superpowers/plans` directory (NOT CLI `codegraph files`)
    - IF found: Save there
    - IF not found: Create `docs/superpowers/plans/` in project root (where .codegraph/ is)
 
-2. **IF no .codegraph/ index:**
-   - Check for git root: `git rev-parse --show-toplevel`
-   - Save to `<git-root>/docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`
+2. **IF no .codegraph/ index — STOP WORKFLOW:**
+   - Announce: "CodeGraph REQUIRED for superpowers workflows. Run: `codegraph init -i`"
+   - DO NOT proceed with plan writing
    - Create directory if missing
 
 3. **IF no git root found:**
@@ -46,25 +46,25 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
-## Pre-Planning: CodeGraph Discovery (MANDATORY when .codegraph/ exists)
+## Pre-Planning: CodeGraph Discovery (MANDATORY - STRICT MODE)
 
-**Check for .codegraph/ index first.**
+**Check for .codegraph/ index first — REQUIRED for superpowers workflows.**
 
 **IF .codegraph/ exists — use CodeGraph tools (NOT codebase-retrieval/view/grep for semantic questions):**
 
-1. **Search existing symbols** — `codegraph_search` for main entities in spec
+1. **Search existing symbols** — **MCP tool** `codegraph_search` for main entities in spec (NOT CLI `codegraph query`)
    - Prevents duplicate/conflicting implementations
    - Verifies signatures before planning changes
 
-2. **Get file structure** — `codegraph_files` (faster than filesystem scanning)
+2. **Get file structure** — **MCP tool** `codegraph_files` (faster than filesystem scanning, NOT CLI `codegraph files <path>`)
    - See indexed structure grouped by directory
    - Inform where new files should live
 
-3. **Verify implementations** — `codegraph_node` for any symbol you'll modify
+3. **Verify implementations** — **MCP tool** `codegraph_node` for any symbol you'll modify
    - Returns full source + all overloads for ambiguous names
    - Check current signatures before planning
 
-4. **Check impact** — `codegraph_impact` on any symbol you'll change
+4. **Check impact** — **MCP tool** `codegraph_impact` on any symbol you'll change (NOT CLI `codegraph impact`)
    - See blast radius BEFORE writing tasks
    - Plan updates for all affected callers
 
@@ -72,9 +72,10 @@ If the spec covers multiple independent subsystems, it should have been broken i
 
 This informs file structure decisions below.
 
-**IF .codegraph/ missing:**
-- Announce: "CodeGraph not indexed — recommend `codegraph init -i`"
-- Fallback: `view`, `codebase-retrieval`, grep
+**IF .codegraph/ missing — STOP WORKFLOW:**
+- Announce: "CodeGraph REQUIRED for superpowers workflows. Run: `codegraph init -i`"
+- Ask user to initialize before continuing
+- DO NOT fallback to `view`, `codebase-retrieval`, grep
 
 ## File Structure
 
