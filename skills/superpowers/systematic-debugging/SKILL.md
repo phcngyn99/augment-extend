@@ -83,10 +83,10 @@ You MUST complete each phase before proceeding to the next.
 
    **Use CodeGraph (MANDATORY, see Phase 1 header):**
    ```
-   1. codegraph_impact on failing symbol → full blast radius
-   2. codegraph_callers on entry point → trace call paths
-   3. codegraph_callees from entry point → downstream calls
-   4. codegraph_explore with component boundary symbols → full flow in one call
+   1. **MCP tool** `codegraph_impact` on failing symbol → full blast radius (NOT CLI `codegraph impact`)
+   2. **MCP tool** `codegraph_callers` on entry point → trace call paths (NOT CLI `codegraph callers`)
+   3. **MCP tool** `codegraph_callees` from entry point → downstream calls (NOT CLI `codegraph callees`)
+   4. **MCP tool** `codegraph_explore` with component boundary symbols → full flow in one call
 
    THEN add targeted instrumentation at gaps CodeGraph didn't cover
    ```
@@ -132,9 +132,9 @@ You MUST complete each phase before proceeding to the next.
 
    **Use CodeGraph (MANDATORY, see Phase 1 header):**
    ```
-   1. codegraph_callers symbol="failingFunction" → trace backward, see ALL call paths
-   2. codegraph_impact symbol="failingFunction" depth=2 → what else affected
-   3. codegraph_explore with symbols from error stack → reconstruct full flow
+   1. **MCP tool** `codegraph_callers symbol="failingFunction"` → trace backward, see ALL call paths
+   2. **MCP tool** `codegraph_impact symbol="failingFunction" depth=2` → what else affected
+   3. **MCP tool** `codegraph_explore` with symbols from error stack → reconstruct full flow
       → Surfaces dynamic-dispatch hops (callbacks, React re-render)
    ```
 

@@ -46,10 +46,10 @@ Skip any step = lying, not verifying
 **IF .codegraph/ exists — use CodeGraph tools (NOT grep/codebase-retrieval):**
 
 ```
-1. codegraph_impact symbol="changedFunction" depth=2
+1. MCP tool: codegraph_impact symbol="changedFunction" depth=2  (NOT CLI: codegraph impact)
    → See full blast radius (all affected symbols + call paths)
 
-2. codegraph_callers symbol="changedFunction"
+2. MCP tool: codegraph_callers symbol="changedFunction"  (NOT CLI: codegraph callers)
    → Complete list of ALL callers
    → Verify EVERY caller updated
 
@@ -74,7 +74,7 @@ NO EXCEPTIONS — run this BEFORE claiming complete
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
-| **Signature changed** | **codegraph_impact + all callers updated (MANDATORY)** | **Grep (FORBIDDEN - misses indirect callers)** |
+| **Signature changed** | **MCP tool `codegraph_impact` + all callers updated (MANDATORY)** | **Grep OR CLI commands (FORBIDDEN - misses indirect callers)** |
 | **No .codegraph/** | **STOP WORKFLOW - initialize first** | **Proceeding without CodeGraph** |
 
 ## Red Flags - STOP

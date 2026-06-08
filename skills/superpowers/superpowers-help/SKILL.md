@@ -129,10 +129,10 @@ Session N:  "use brainstorming for integration testing"
 
 CodeGraph provides semantic code intelligence that accelerates all skills:
 
-- **brainstorming** — `codegraph_explore` understands existing architecture before design
-- **writing-plans** — `codegraph_search` finds symbols, `codegraph_files` shows structure
-- **systematic-debugging** — `codegraph_callers`/`codegraph_callees` trace flows
-- **verification-before-completion** — `codegraph_impact` checks blast radius before claiming done
+- **brainstorming** — **MCP tool** `codegraph_explore` understands existing architecture before design
+- **writing-plans** — **MCP tools** `codegraph_search` finds symbols, `codegraph_files` shows structure
+- **systematic-debugging** — **MCP tools** `codegraph_callers`/`codegraph_callees` trace flows
+- **verification-before-completion** — **MCP tool** `codegraph_impact` checks blast radius before claiming done
 
 **To enable:** Run `codegraph init -i` in project root (one-time setup).
 

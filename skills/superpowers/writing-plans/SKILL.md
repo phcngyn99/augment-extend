@@ -22,7 +22,7 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 **Project-aware plan location (MANDATORY):**
 
 1. **Check if .codegraph/ exists in current workspace (MANDATORY):**
-   - IF yes: Use `codegraph_files` to search for existing `docs/superpowers/plans` directory
+   - IF yes: Use **MCP tool** `codegraph_files` to search for existing `docs/superpowers/plans` directory (NOT CLI `codegraph files`)
    - IF found: Save there
    - IF not found: Create `docs/superpowers/plans/` in project root (where .codegraph/ is)
 
@@ -52,19 +52,19 @@ If the spec covers multiple independent subsystems, it should have been broken i
 
 **IF .codegraph/ exists — use CodeGraph tools (NOT codebase-retrieval/view/grep for semantic questions):**
 
-1. **Search existing symbols** — `codegraph_search` for main entities in spec
+1. **Search existing symbols** — **MCP tool** `codegraph_search` for main entities in spec (NOT CLI `codegraph query`)
    - Prevents duplicate/conflicting implementations
    - Verifies signatures before planning changes
 
-2. **Get file structure** — `codegraph_files` (faster than filesystem scanning)
+2. **Get file structure** — **MCP tool** `codegraph_files` (faster than filesystem scanning, NOT CLI `codegraph files <path>`)
    - See indexed structure grouped by directory
    - Inform where new files should live
 
-3. **Verify implementations** — `codegraph_node` for any symbol you'll modify
+3. **Verify implementations** — **MCP tool** `codegraph_node` for any symbol you'll modify
    - Returns full source + all overloads for ambiguous names
    - Check current signatures before planning
 
-4. **Check impact** — `codegraph_impact` on any symbol you'll change
+4. **Check impact** — **MCP tool** `codegraph_impact` on any symbol you'll change (NOT CLI `codegraph impact`)
    - See blast radius BEFORE writing tasks
    - Plan updates for all affected callers
 

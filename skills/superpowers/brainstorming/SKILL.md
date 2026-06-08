@@ -24,9 +24,9 @@ You MUST create a task for each of these items and complete them in order:
 1. **Explore project context** — check files, docs, recent commits
    - **Check for .codegraph/ index first (MANDATORY)**
    - **IF .codegraph/ exists — use CodeGraph tools:**
-     - `codegraph_explore` to understand architecture before designing changes
-     - `codegraph_search` to find existing symbols/patterns
-     - `codegraph_files` for directory structure
+     - **MCP tool:** `codegraph_explore` to understand architecture before designing changes (NOT CLI command)
+     - **MCP tool:** `codegraph_search` to find existing symbols/patterns (NOT `codegraph query`)
+     - **MCP tool:** `codegraph_files` for directory structure (NOT `codegraph files <path>`)
      - Treat returned source as already Read
    - **IF .codegraph/ missing — STOP WORKFLOW:**
      - Announce: "CodeGraph REQUIRED for superpowers workflows. Run: `codegraph init -i`"
