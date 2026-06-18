@@ -1,0 +1,11 @@
+Prequisites:
+- Node.js
+- npm
+- Python 3.10+
+- pip
+- git
+- gh (GitHub CLI)
+- claude (Claude CLI)
+- codegraph (CodeGraph CLI)
+- superpowers (Superpowers CLI)
+- ui-ux-pro-max-skill (UI/UX Pro Max Skill CLI)

@@ -1,0 +1,18 @@
+[submodule "submodule/codegraph"]
+	path = submodule/codegraph
+	url = https://github.com/colbymchenry/codegraph
+[submodule "submodule/superpowers"]
+	path = submodule/superpowers
+	url = https://github.com/obra/Superpowers
+[submodule "submodule/andrej-karpathy-skills"]
+	path = submodule/andrej-karpathy-skills
+	url = https://github.com/multica-ai/andrej-karpathy-skills
+[submodule "submodule/ui-ux-pro-max-skill"]
+	path = submodule/ui-ux-pro-max-skill
+	url = https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git
+[submodule "submodule/caveman"]
+	path = submodule/caveman
+	url = https://github.com/JuliusBrussee/caveman.git
+[submodule "submodule/skills"]
+	path = submodule/skills
+	url = https://github.com/mattpocock/skills
