@@ -1,5 +1,5 @@
 Prequisites:
-- Node.js
+- Node.js 20+
 - npm
 - Python 3.10+
 - pip
@@ -7,5 +7,6 @@ Prequisites:
 - gh (GitHub CLI)
 - claude (Claude CLI)
 - codegraph (CodeGraph CLI)
-- superpowers (Superpowers CLI)
-- ui-ux-pro-max-skill (UI/UX Pro Max Skill CLI)
+
+Note:
+- When installing codegraph, make sure using 'Claude Code' as the target agent.
