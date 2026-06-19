@@ -39,22 +39,22 @@ Use **CodeGraph MCP tools** for all codebase discovery, navigation, and dependen
 - Finding symbols by name when you don't know location
 - Filtering by kind (function/class/method/etc)
 
-**Use `codegraph_callers/callees/impact`** for:
+**Use `codegraph_callers_codegraph/callees_codegraph/impact_codegraph`** for:
 - Refactor planning
 - Understanding side effects
 - Blast radius analysis
 
 **Avoid `view` and Terminal commands for:**
-- Reading source files → use `codegraph_node({ file: "..." })`
-- Searching code → use `codegraph_search` or `codegraph_explore`
-- Finding files → use `codegraph_files` (returns tree + metadata)
-- Grepping content → use `codegraph_search` with kind filters
+- Reading source files → use `codegraph_node_codegraph({ file: "..." })`
+- Searching code → use `codegraph_search_codegraph` or `codegraph_explore_codegraph`
+- Finding files → use `codegraph_files_codegraph` (returns tree + metadata)
+- Grepping content → use `codegraph_search_codegraph` with kind filters
 
 ### Reading Files — CRITICAL
 
 **`codegraph_node_codegraph` with `file` param (no `symbol`) REPLACES the `view` tool for ALL indexed files.**
 
-**Always try `codegraph_node` FIRST before falling back to `view`.**
+**Always try `codegraph_node_codegraph` FIRST before falling back to `view`.**
 
 **Examples:**
 ```javascript
@@ -79,7 +79,7 @@ view({ path: "app/services/api.py" })
 - Works for `.py`, `.js`, `.ts`, `.sql`, `.json`, `.yaml`, config files
 
 **Fallback to `view` only when:**
-- `codegraph_node` returns "file not in index"
+- `codegraph_node_codegraph` returns "file not in index"
 - Binary files (images, PDFs)
 - Generated files explicitly excluded from index
 
@@ -95,10 +95,10 @@ CodeGraph provides:
 - **Structural** — call graphs, impact analysis, flow tracing
 - **Complete** — includes synthesized edges for dynamic dispatch (callbacks, React render, event emitters)
 - **Always fresh** — auto-sync keeps index current
-- **Fewer tool calls** — one `codegraph_node` returns file + dependencies vs separate `view` + searches
+- **Fewer tool calls** — one `codegraph_node_codegraph` returns file + dependencies vs separate `view` + searches
 
-**Common mistake:** Using `view` to read `.py`/`.js`/`.ts`/`.sql` files when `codegraph_node({ file: "..." })` would work.
+**Common mistake:** Using `view` to read `.py`/`.js`/`.ts`/`.sql` files when `codegraph_node_codegraph({ file: "..." })` would work.
 
 **Result:** Wasted reads, no dependency info, slower responses.
 
-**Fix:** Always try `codegraph_node` first for ANY file that might be indexed.
+**Fix:** Always try `codegraph_node_codegraph` first for ANY file that might be indexed.
