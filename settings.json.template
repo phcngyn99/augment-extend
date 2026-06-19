@@ -15,7 +15,10 @@
     },
     "codegraph": {
       "command": "npx",
-      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"]
+      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"],
+      // "env": {
+      //   "CODEGRAPH_MCP_TOOLS": "explore,node,search,callers,callees,impact,files,status"
+      // }
     },
     "agent-browser": {
       "command": "agent-browser",
@@ -28,7 +31,7 @@
   "theme": "default-dark",
   "toolPermissions": [
     { "toolName": "codebase-retrieval", "permission": { "type": "deny" } },
-    { "toolName": "grep-search", "permission": { "type": "allow" } },
+    { "toolName": "grep-search", "permission": { "type": "deny" } }
   ],
   "verbose": false
 }
