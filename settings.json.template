@@ -16,9 +16,9 @@
     "codegraph": {
       "command": "npx",
       "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"],
-      // "env": {
-      //   "CODEGRAPH_MCP_TOOLS": "explore,node,search,callers,callees,impact,files,status"
-      // }
+      "env": {
+        "CODEGRAPH_MCP_TOOLS": "explore,node,search,callers,callees,impact,files,status"
+      }
     },
     "agent-browser": {
       "command": "agent-browser",

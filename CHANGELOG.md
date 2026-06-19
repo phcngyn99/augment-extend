@@ -46,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added ECC submodule (reference only )
 - Added agent-browser submodule (reference only - install via `npm install -g agent-browser && agent-browser install`, not symlinks) and mcp serverW
 - Added ECC subagent e2e-runner symlink from `agents/e2e-runner.md` to `submodule/ECC/agents/e2e-runner.md`
-
+- Added codegraph rule at `rules/codegraph-only.md` 
 ### Changed
 
 ### Deprecated
