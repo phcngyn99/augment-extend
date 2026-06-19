@@ -16,3 +16,6 @@
 [submodule "submodule/skills"]
 	path = submodule/skills
 	url = https://github.com/mattpocock/skills
+[submodule "submodule/ECC"]
+	path = submodule/ECC
+	url = https://github.com/affaan-m/ECC

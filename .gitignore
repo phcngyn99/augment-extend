@@ -6,3 +6,4 @@ settings.json
 .auggie.json
 prompt-history.jsonl
 checkpoint-documents
+untruncated
