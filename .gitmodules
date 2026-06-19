@@ -19,3 +19,6 @@
 [submodule "submodule/ECC"]
 	path = submodule/ECC
 	url = https://github.com/affaan-m/ECC
+[submodule "submodule/agent-browser"]
+	path = submodule/agent-browser
+	url = https://github.com/vercel-labs/agent-browser

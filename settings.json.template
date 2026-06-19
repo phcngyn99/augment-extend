@@ -15,10 +15,20 @@
     },
     "codegraph": {
       "command": "npx",
-      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"],
-      "env": {
-        "CODEGRAPH_MCP_TOOLS": "explore,node,search,callers,callees,impact,files,status"
-      }
+      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"]
+    },
+    "agent-browser": {
+      "command": "agent-browser",
+      "args": ["mcp", "--tools", "all"]
     }
-  }
+  },
+  "notificationMode": "desktop_notification",
+  "startupScript": "~/.augment/startup/update-submodules.sh --dry-run",
+  "autoUpdateMarketplaces": true,
+  "theme": "default-dark",
+  "toolPermissions": [
+    { "toolName": "codebase-retrieval", "permission": { "type": "deny" } },
+    { "toolName": "grep-search", "permission": { "type": "allow" } },
+  ],
+  "verbose": false
 }

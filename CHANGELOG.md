@@ -43,6 +43,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `skills/writing-plans` → `submodule/superpowers/skills/writing-plans`
   - `skills/writing-skills` → `submodule/superpowers/skills/writing-skills`
 - Added ui-ux-pro-max-skill submodule (reference only - install via `npm install -g uipro-cli && uipro init --ai augment`, not symlinks)
+- Added ECC submodule (reference only )
+- Added agent-browser submodule (reference only - install via `npm install -g agent-browser && agent-browser install`, not symlinks) and mcp serverW
+- Added ECC subagent e2e-runner symlink from `agents/e2e-runner.md` to `submodule/ECC/agents/e2e-runner.md`
 
 ### Changed
 
