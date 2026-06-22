@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added ECC subagent e2e-runner symlink from `agents/e2e-runner.md` to `submodule/ECC/agents/e2e-runner.md`
 - Added codegraph rule at `rules/codegraph-only.md`
 - Added `scripts/setup-symlinks.sh` to automate submodule initialization and symlink creation for all skills, rules, and agents
-- Added `scripts/install-to-augment.sh` for new machine installation - copies repo to ~/.augment and runs setup-symlinks.sh
+- Added `scripts/install-to-augment.sh` for new machine installation - copies repo to ~/.augment, creates settings.json from template, and runs setup-symlinks.sh
 - Created `scripts/` directory to organize installation and setup scripts
 
 ### Changed

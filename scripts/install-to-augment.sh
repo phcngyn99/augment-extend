@@ -64,9 +64,19 @@ rsync -av \
 echo "Copy complete."
 echo ""
 
+# Copy settings.json.template to settings.json
+echo "Setup settings.json from template..."
+cd "$AUGMENT_DIR"
+if [ -f "settings.json.template" ]; then
+    cp settings.json.template settings.json
+    echo "settings.json created from template."
+else
+    echo "WARN: settings.json.template not found."
+fi
+echo ""
+
 # Run setup-symlinks.sh from Augment dir
 echo "Run setup-symlinks.sh..."
-cd "$AUGMENT_DIR"
 bash scripts/setup-symlinks.sh
 
 echo ""
