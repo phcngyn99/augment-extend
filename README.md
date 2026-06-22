@@ -1,4 +1,5 @@
 Prerequisites:
+- Auggie CLI (https://www.augmentcode.com)
 - Node.js 20+
 - npm
 - Python 3.10+
@@ -10,7 +11,18 @@ Prerequisites:
 - uipro-cli (UI/UX Pro Max CLI)
 - agent-browser (Agent Browser CLI)
 
-Installation:
+Installation (New Machine):
+1. Clone repo: `git clone <repo-url> augment-config && cd augment-config`
+2. Install to ~/.augment: `./scripts/install-to-augment.sh`
+   - Checks Auggie CLI installed
+   - Copies repo to ~/.augment (excludes .gitignore files)
+   - Sets up submodules and creates symlinks automatically
+
+Installation (Already in ~/.augment):
+- Quick setup: `./scripts/setup-symlinks.sh`
+- Manual setup:
+  - Submodules: `git submodule update --init --recursive`
+  - Create symlinks manually (see scripts/setup-symlinks.sh for reference)
 - codegraph:
   - Install CLI: `curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh` (or use npm: `npm i -g @colbymchenry/codegraph`)
   - Wire to agent: `codegraph install` (select 'Claude Code' as target agent)
