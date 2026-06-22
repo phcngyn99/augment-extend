@@ -46,9 +46,8 @@ echo "Copy to $AUGMENT_DIR..."
 # Create Augment dir if not exists
 mkdir -p "$AUGMENT_DIR"
 
-# Copy using rsync, exclude .git and gitignore entries
+# Copy using rsync, include .git for submodule support
 rsync -av \
-    --exclude='.git' \
     --exclude='binaries' \
     --exclude='sessions' \
     --exclude='task-storage' \
