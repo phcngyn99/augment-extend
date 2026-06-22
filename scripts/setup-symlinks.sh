@@ -5,12 +5,6 @@ set -e
 echo "Install Augment config..."
 echo ""
 
-# Check if we're in a git repository
-if [ ! -d ".git" ]; then
-    echo "ERROR: Not git repo. Run from repo root."
-    exit 1
-fi
-
 # Initialize git submodules if needed
 echo "Check submodules..."
 if git submodule status | grep -q '^-'; then
