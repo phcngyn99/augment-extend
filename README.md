@@ -45,3 +45,8 @@ Manual Setup (If Installing Directly to ~/.augment):
   - Install: `npm install -g agent-browser && agent-browser install  # Download Chrome from Chrome for Testing (first time only)`
   - Update: `agent-browser upgrade`
   - Uninstall: `TBD`
+- ppt-master:
+  - Install: `cd submodule/ppt-master && pip install -r requirements.txt && ln -s ~/.augment/submodule/ppt-master/skills/ppt-master ~/.augment/skills/ppt-master`
+  - Set env: `echo 'export SKILL_DIR="$HOME/.augment/skills/ppt-master"' >> ~/.zshrc && echo 'export SKILL_DIR="$HOME/.augment/skills/ppt-master"' >> ~/.bashrc` (restart terminal or run `source ~/.zshrc`)
+  - Update: `cd ~/.augment/submodule/ppt-master && git pull && pip install -r requirements.txt`
+  - Note: Requires same Python interpreter as Auggie CLI (typically system Python 3.10+)
