@@ -50,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `scripts/setup-symlinks.sh` to automate submodule initialization and symlink creation for all skills, rules, and agents
 - Added `scripts/install-to-augment.sh` for new machine installation - copies repo to ~/.augment, creates settings.json from template, and runs setup-symlinks.sh
 - Created `scripts/` directory to organize installation and setup scripts
+- Added symlink for deep-research skill from `skills/deep-research` to `submodule/ECC/skills/deep-research`
 
 ### Changed
 
