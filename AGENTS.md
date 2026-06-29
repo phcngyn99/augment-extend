@@ -1,0 +1,2 @@
+- Before commiting, update the CHANGELOG.md
+- Do not auto commit

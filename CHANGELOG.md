@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Moved non-standalone caveman skills to `skills-lib/`:
+  - `skills/cavecrew` → `skills-lib/cavecrew` (requires Augment subagent runtime)
+  - `skills/caveman-compress` → `skills-lib/caveman-compress` (requires Anthropic API)
+- Removed duplicate rule symlinks to prevent double-loading:
+  - Deleted `rules/caveman.md` (kept `skills/caveman` as canonical source)
+  - Deleted `rules/karpathy-guidelines.md` (kept `skills/karpathy-guidelines` as canonical source)
+
 ### Added
 
 - Added andrej-karpathy-skills submodule integration

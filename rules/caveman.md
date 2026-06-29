@@ -1,1 +1,0 @@
-../submodule/caveman/skills/caveman/SKILL.md
