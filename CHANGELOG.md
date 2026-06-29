@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `browse-skills` skill - catalog optional skills in skills-lib (TDD verified)
 - Added `skills-lib/README.md` - single-source catalog for all optional skills
+- Added `agents/plan.md` - custom plan agent that overrides built-in plan subagent to enforce writing-plans skill usage
 
 ### Changed
 
