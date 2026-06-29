@@ -7,11 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added `browse-skills` skill - catalog optional skills in skills-lib (TDD verified)
+- Added `skills-lib/README.md` - single-source catalog for all optional skills
+
 ### Changed
 
 - Moved non-standalone caveman skills to `skills-lib/`:
   - `skills/cavecrew` → `skills-lib/cavecrew` (requires Augment subagent runtime)
   - `skills/caveman-compress` → `skills-lib/caveman-compress` (requires Anthropic API)
+- Moved grill-related skills to `skills-lib/`:
+  - `skills/grilling` → `skills-lib/grilling`
+  - `skills/grill-with-docs` → `skills-lib/grill-with-docs`
+  - `skills/domain-modeling` → `skills-lib/domain-modeling`
 - Removed duplicate rule symlinks to prevent double-loading:
   - Deleted `rules/caveman.md` (kept `skills/caveman` as canonical source)
   - Deleted `rules/karpathy-guidelines.md` (kept `skills/karpathy-guidelines` as canonical source)
