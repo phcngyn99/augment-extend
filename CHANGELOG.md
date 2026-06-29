@@ -16,6 +16,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Enhanced `agents/plan.md` to enforce strict path compliance (`docs/superpowers/plans/YYYY-MM-DD-<feature>.md`) and explicit skill announcement
+
+### Fixed
+
+- Fixed plan agent to enforce correct directory structure (`docs/superpowers/plans/`) instead of `docs/plans/`
+- Fixed plan agent to include required date prefix (YYYY-MM-DD) in plan filenames
+
+### Changed
+
 - Moved non-standalone caveman skills to `skills-lib/`:
   - `skills/cavecrew` → `skills-lib/cavecrew` (requires Augment subagent runtime)
   - `skills/caveman-compress` → `skills-lib/caveman-compress` (requires Anthropic API)
