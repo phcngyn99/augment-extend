@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fixed `scripts/setup-symlinks.sh` to create optional skills symlinks in `skills-lib/` instead of `skills/` (cavecrew, caveman-compress, grilling, grill-with-docs, domain-modeling)
+- Compressed README.md (~45% reduction, 344→190 lines) — dropped filler, condensed lists, preserved all technical content
 
 ### Added
 
