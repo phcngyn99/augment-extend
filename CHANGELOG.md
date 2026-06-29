@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `browse-skills` skill - catalog optional skills in skills-lib (TDD verified)
 - Added `skills-lib/README.md` - single-source catalog for all optional skills
 - Added `agents/plan.md` - custom plan agent that overrides built-in plan subagent to enforce writing-plans skill usage
+- Updated `README.md` - comprehensive documentation reflecting current architecture, all 9 submodules, skills/skills-lib distinction, tool integrations, MCP servers, and troubleshooting
 
 ### Changed
 
@@ -25,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed duplicate rule symlinks to prevent double-loading:
   - Deleted `rules/caveman.md` (kept `skills/caveman` as canonical source)
   - Deleted `rules/karpathy-guidelines.md` (kept `skills/karpathy-guidelines` as canonical source)
+
+### Fixed
+
+- Fixed `scripts/setup-symlinks.sh` to create optional skills symlinks in `skills-lib/` instead of `skills/` (cavecrew, caveman-compress, grilling, grill-with-docs, domain-modeling)
 
 ### Added
 

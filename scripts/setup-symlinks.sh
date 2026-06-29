@@ -40,11 +40,14 @@ echo "Create symlinks..."
 echo "Caveman skills..."
 create_symlink "../submodule/caveman/skills/caveman" "skills/caveman"
 create_symlink "../submodule/caveman/skills/caveman-commit" "skills/caveman-commit"
-create_symlink "../submodule/caveman/skills/caveman-compress" "skills/caveman-compress"
 create_symlink "../submodule/caveman/skills/caveman-help" "skills/caveman-help"
 create_symlink "../submodule/caveman/skills/caveman-review" "skills/caveman-review"
 create_symlink "../submodule/caveman/skills/caveman-stats" "skills/caveman-stats"
-create_symlink "../submodule/caveman/skills/cavecrew" "skills/cavecrew"
+
+# Optional caveman skills (skills-lib)
+echo "Caveman optional skills..."
+create_symlink "../submodule/caveman/skills/caveman-compress" "skills-lib/caveman-compress"
+create_symlink "../submodule/caveman/skills/cavecrew" "skills-lib/cavecrew"
 
 # Skills from superpowers submodule
 echo "Superpowers skills..."
@@ -66,9 +69,12 @@ create_symlink "../submodule/superpowers/skills/writing-skills" "skills/writing-
 # Skills from skills submodule
 echo "Matt Pocock skills..."
 create_symlink "../submodule/skills/skills/productivity/handoff" "skills/handoff"
-create_symlink "../submodule/skills/skills/engineering/grill-with-docs" "skills/grill-with-docs"
-create_symlink "../submodule/skills/skills/productivity/grilling" "skills/grilling"
-create_symlink "../submodule/skills/skills/engineering/domain-modeling" "skills/domain-modeling"
+
+# Optional skills from skills submodule (skills-lib)
+echo "Matt Pocock optional skills..."
+create_symlink "../submodule/skills/skills/engineering/grill-with-docs" "skills-lib/grill-with-docs"
+create_symlink "../submodule/skills/skills/productivity/grilling" "skills-lib/grilling"
+create_symlink "../submodule/skills/skills/engineering/domain-modeling" "skills-lib/domain-modeling"
 
 # Skills from andrej-karpathy-skills submodule
 echo "Karpathy guidelines..."
@@ -76,8 +82,9 @@ create_symlink "../submodule/andrej-karpathy-skills/skills/karpathy-guidelines" 
 
 # Rules
 echo "Rules..."
-create_symlink "../submodule/caveman/skills/caveman/SKILL.md" "rules/caveman.md"
-create_symlink "../submodule/andrej-karpathy-skills/CLAUDE.md" "rules/karpathy-guidelines.md"
+create_symlink "../rules/codegraph-only.md" "rules/codegraph-only.md"
+# Note: rules/caveman.md and rules/karpathy-guidelines.md removed to prevent
+# double-loading (skills/caveman and skills/karpathy-guidelines are canonical)
 
 # Agents
 echo "Agents..."
