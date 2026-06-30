@@ -80,6 +80,15 @@ create_symlink "../submodule/skills/skills/engineering/domain-modeling" "skills-
 echo "Karpathy guidelines..."
 create_symlink "../submodule/andrej-karpathy-skills/skills/karpathy-guidelines" "skills/karpathy-guidelines"
 
+# Skills from ponytail submodule
+echo "Ponytail skills..."
+create_symlink "../submodule/ponytail/skills/ponytail" "skills/ponytail"
+create_symlink "../submodule/ponytail/skills/ponytail-audit" "skills/ponytail-audit"
+create_symlink "../submodule/ponytail/skills/ponytail-debt" "skills/ponytail-debt"
+create_symlink "../submodule/ponytail/skills/ponytail-gain" "skills/ponytail-gain"
+create_symlink "../submodule/ponytail/skills/ponytail-help" "skills/ponytail-help"
+create_symlink "../submodule/ponytail/skills/ponytail-review" "skills/ponytail-review"
+
 # Rules
 echo "Rules..."
 create_symlink "../rules/codegraph-only.md" "rules/codegraph-only.md"

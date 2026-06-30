@@ -4,7 +4,7 @@ Augment CLI extension — specialized agents, skills, workflows via 9 submodules
 
 ## Overview
 
-- **23+ Core Skills** (always on) — TDD, planning, debug, code review, git workflows
+- **29 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, ponytail (YAGNI enforcement)
 - **6 Optional Skills** (on-demand) — cavecrew, caveman-compress, domain-modeling, grilling, grill-with-docs, ppt-master
 - **8 Subagents** — explore, research, code, validate, e2e-runner, auggie-guide, general-purpose, plan
 - **CodeGraph MCP** — Structural code intelligence (replaces codebase-retrieval)
@@ -17,12 +17,12 @@ Augment CLI extension — specialized agents, skills, workflows via 9 submodules
 ```
 ~/.augment/
 ├── agents/              # e2e-runner.md, plan.md
-├── skills/              # 23 core (symlinks to submodule/*/skills/*)
+├── skills/              # 29 core (symlinks to submodule/*/skills/*)
 ├── skills-lib/          # 6 optional (cavecrew, caveman-compress, domain-modeling, etc.)
 ├── rules/               # codegraph-only.md
 ├── scripts/             # install-to-augment.sh, setup-symlinks.sh
 ├── startup/             # show-workspace.sh, update-submodules.sh
-├── submodule/           # 9 submodules (ECC, agent-browser, caveman, codegraph, etc.)
+├── submodule/           # 10 submodules (ECC, agent-browser, caveman, codegraph, ponytail, etc.)
 └── settings.json        # MCP servers, tool permissions
 ```
 
@@ -42,7 +42,7 @@ cd augment-extend
 ./scripts/install-to-augment.sh
 ```
 
-Does: verify Auggie, copy to `~/.augment`, init 9 submodules, create symlinks, setup MCP servers.
+Does: verify Auggie, copy to `~/.augment`, init 10 submodules, create symlinks, setup MCP servers.
 
 **Run `auggie` from any project** — uses `~/.augment` config.
 
@@ -100,9 +100,9 @@ Needs Python 3.10+ (same as Auggie).
 
 ## Skills
 
-### Core (23 always-on)
+### Core (29 always-on)
 
-brainstorming, caveman, caveman-commit, caveman-help, caveman-review, caveman-stats, deep-research, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, handoff, karpathy-guidelines, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills.
+brainstorming, caveman, caveman-commit, caveman-help, caveman-review, caveman-stats, deep-research, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, handoff, karpathy-guidelines, ponytail, ponytail-audit, ponytail-debt, ponytail-gain, ponytail-help, ponytail-review, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills.
 
 Use `browse-skills` to discover optional.
 

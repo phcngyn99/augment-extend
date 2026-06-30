@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added ponytail submodule integration with symlinks for 6 skills:
+  - `skills/ponytail` → `submodule/ponytail/skills/ponytail` (core YAGNI enforcement)
+  - `skills/ponytail-audit` → `submodule/ponytail/skills/ponytail-audit` (/ponytail-audit command)
+  - `skills/ponytail-debt` → `submodule/ponytail/skills/ponytail-debt` (/ponytail-debt command)
+  - `skills/ponytail-gain` → `submodule/ponytail/skills/ponytail-gain` (/ponytail-gain command)
+  - `skills/ponytail-help` → `submodule/ponytail/skills/ponytail-help` (/ponytail-help command)
+  - `skills/ponytail-review` → `submodule/ponytail/skills/ponytail-review` (/ponytail-review command)
 - Added `browse-skills` skill - catalog optional skills in skills-lib (TDD verified)
 - Added `skills-lib/README.md` - single-source catalog for all optional skills
 - Added `agents/plan.md` - custom plan agent that overrides built-in plan subagent to enforce writing-plans skill usage
