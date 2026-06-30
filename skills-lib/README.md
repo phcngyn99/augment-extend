@@ -11,6 +11,7 @@ Optional/advanced skills requiring external dependencies or specialized capabili
 | **domain-modeling** | Build/maintain domain glossary + ADRs | None |
 | **grill-with-docs** | Stress-test plan + generate docs | grilling + domain-modeling |
 | **grilling** | Stress-test plan/design before building | None |
+| **karpathy-guidelines** | Reduce LLM coding mistakes (overcomplication, etc.) | None |
 | **ppt-master** | Generate presentations from sources | External APIs |
 
 ---
@@ -85,6 +86,22 @@ Optional/advanced skills requiring external dependencies or specialized capabili
 - Explore codebase when question answerable that way
 
 **Triggers:** "grill this plan", "stress-test design", "challenge assumptions"
+
+**Dependency:** None
+
+---
+
+## karpathy-guidelines
+
+**When:** Writing, reviewing, or refactoring code to avoid common LLM mistakes
+
+**What:**
+- Think before coding (surface assumptions, ask when unclear)
+- Simplicity first (no speculative features/abstractions)
+- Surgical changes (touch only what you must)
+- Goal-driven execution (define verifiable success criteria)
+
+**Triggers:** "use karpathy-guidelines", code review, refactoring tasks
 
 **Dependency:** None
 

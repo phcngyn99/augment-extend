@@ -4,8 +4,8 @@ Augment CLI extension — specialized agents, skills, workflows via 9 submodules
 
 ## Overview
 
-- **29 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, ponytail (YAGNI enforcement)
-- **6 Optional Skills** (on-demand) — cavecrew, caveman-compress, domain-modeling, grilling, grill-with-docs, ppt-master
+- **28 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, ponytail (YAGNI enforcement)
+- **7 Optional Skills** (on-demand) — cavecrew, caveman-compress, domain-modeling, grilling, grill-with-docs, karpathy-guidelines, ppt-master
 - **8 Subagents** — explore, research, code, validate, e2e-runner, auggie-guide, general-purpose, plan
 - **CodeGraph MCP** — Structural code intelligence (replaces codebase-retrieval)
 - **Agent Browser MCP** — E2E testing + browser automation
@@ -17,8 +17,8 @@ Augment CLI extension — specialized agents, skills, workflows via 9 submodules
 ```
 ~/.augment/
 ├── agents/              # e2e-runner.md, plan.md
-├── skills/              # 29 core (symlinks to submodule/*/skills/*)
-├── skills-lib/          # 6 optional (cavecrew, caveman-compress, domain-modeling, etc.)
+├── skills/              # 28 core (symlinks to submodule/*/skills/*)
+├── skills-lib/          # 7 optional (cavecrew, caveman-compress, domain-modeling, karpathy-guidelines, etc.)
 ├── rules/               # codegraph-only.md
 ├── scripts/             # install-to-augment.sh, setup-symlinks.sh
 ├── startup/             # show-workspace.sh, update-submodules.sh

@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Moved `skills/karpathy-guidelines` → `skills-lib/karpathy-guidelines` (now optional, on-demand skill)
+  - Updated skill counts: 29 core → 28 core, 6 optional → 7 optional
+  - Updated README.md and skills-lib/README.md to reflect new counts
+  - Added karpathy-guidelines entry to skills-lib catalog
+
+### Changed
+
 - Enhanced `AGENTS.md` with comprehensive workspace rules following recommended frontmatter format
   - Added YAML frontmatter with `type: always_apply`
   - Expanded from 2 rules to 8 sections covering: Version Control, Skills, Agents, Submodules, Rules, Scripts, File Organization, Documentation
