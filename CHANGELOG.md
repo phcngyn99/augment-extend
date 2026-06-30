@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `rules/finn-guidelines.md` - Personal technical decision-making guideline: prioritize correctness over development cost
+
+### Changed
+
+- Enhanced `AGENTS.md` with comprehensive workspace rules following recommended frontmatter format
+  - Added YAML frontmatter with `type: always_apply`
+  - Expanded from 2 rules to 8 sections covering: Version Control, Skills, Agents, Submodules, Rules, Scripts, File Organization, Documentation
+  - Preserved original rules: "Update CHANGELOG.md before committing" and "Do not auto commit"
+  - Added specific guidelines for symlink management, submodule updates, and directory structure
+
+### Added
+
 - Added ponytail submodule integration with symlinks for 6 skills:
   - `skills/ponytail` → `submodule/ponytail/skills/ponytail` (core YAGNI enforcement)
   - `skills/ponytail-audit` → `submodule/ponytail/skills/ponytail-audit` (/ponytail-audit command)
