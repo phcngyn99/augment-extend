@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated skill counts: 29 core → 28 core, 6 optional → 7 optional
   - Updated README.md and skills-lib/README.md to reflect new counts
   - Added karpathy-guidelines entry to skills-lib catalog
+  - Updated scripts/setup-symlinks.sh to create symlink in skills-lib/ instead of skills/
 
 ### Changed
 

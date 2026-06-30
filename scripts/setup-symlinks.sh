@@ -76,9 +76,9 @@ create_symlink "../submodule/skills/skills/engineering/grill-with-docs" "skills-
 create_symlink "../submodule/skills/skills/productivity/grilling" "skills-lib/grilling"
 create_symlink "../submodule/skills/skills/engineering/domain-modeling" "skills-lib/domain-modeling"
 
-# Skills from andrej-karpathy-skills submodule
-echo "Karpathy guidelines..."
-create_symlink "../submodule/andrej-karpathy-skills/skills/karpathy-guidelines" "skills/karpathy-guidelines"
+# Optional skills from andrej-karpathy-skills submodule (skills-lib)
+echo "Karpathy optional skills..."
+create_symlink "../submodule/andrej-karpathy-skills/skills/karpathy-guidelines" "skills-lib/karpathy-guidelines"
 
 # Skills from ponytail submodule
 echo "Ponytail skills..."
@@ -93,7 +93,7 @@ create_symlink "../submodule/ponytail/skills/ponytail-review" "skills/ponytail-r
 echo "Rules..."
 create_symlink "../rules/codegraph-only.md" "rules/codegraph-only.md"
 # Note: rules/caveman.md and rules/karpathy-guidelines.md removed to prevent
-# double-loading (skills/caveman and skills/karpathy-guidelines are canonical)
+# double-loading (skills/caveman is core, skills-lib/karpathy-guidelines is optional)
 
 # Agents
 echo "Agents..."
