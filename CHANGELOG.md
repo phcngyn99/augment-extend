@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `browse-skills` skill - catalog optional skills in skills-lib (TDD verified)
 - Added `skills-lib/README.md` - single-source catalog for all optional skills
 - Added `agents/plan.md` - custom plan agent that overrides built-in plan subagent to enforce writing-plans skill usage
+- Added `docs/playwright-arm64-jetson.md` - comprehensive guide for Playwright setup on ARM64/Jetson with snap Chromium
 - Updated `README.md` - comprehensive documentation reflecting current architecture, all 9 submodules, skills/skills-lib distinction, tool integrations, MCP servers, and troubleshooting
 
 ### Changed

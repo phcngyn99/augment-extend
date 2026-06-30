@@ -186,6 +186,8 @@ cd ~/.augment/submodule/<name>
 
 **PPT Master fail:** `cd ~/.augment/submodule/ppt-master && pip install -r requirements.txt && echo $SKILL_DIR`
 
+**Playwright on ARM64/Jetson:** See [docs/playwright-arm64-jetson.md](docs/playwright-arm64-jetson.md) for snap Chromium setup
+
 ## License
 
 See submodule licenses.
