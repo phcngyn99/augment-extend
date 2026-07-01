@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `rules/agent-browser-only.md` - Enforcement policy for using Agent Browser MCP tools exclusively for web interactions
+  - Prohibits `web-fetch` (already denied in settings.json)
+  - Establishes fallback hierarchy: Agent Browser → Playwright → Never web-fetch
+  - Documents all agent-browser MCP tools and usage patterns
+  - Mirrors structure of `rules/codegraph-only.md`
 - Added `rules/finn-guidelines.md` - Personal technical decision-making guideline: prioritize correctness over development cost
 
 ### Changed
