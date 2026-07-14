@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `rules/codegraph.md` - CodeGraph MCP usage guidance converted from submodule
+  - Converted from Cursor-specific `.mdc` format to Augment-compatible `.md` format
+  - Changed frontmatter: `alwaysApply: true` → `type: always_apply`
+  - Provides guidance on using `codegraph_explore` tool
+
 ### Removed
 
 - Removed `rules/codegraph-only.md` - CodeGraph enforcement policy no longer needed
