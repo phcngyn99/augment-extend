@@ -1,0 +1,1 @@
+../submodule/superpowers/hooks/run-hook.cmd

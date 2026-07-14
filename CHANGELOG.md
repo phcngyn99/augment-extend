@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added superpowers hooks integration (SessionStart hook)
+  - Created symlinks: `hooks/hooks.json`, `hooks/run-hook.cmd`, `hooks/session-start` → `submodule/superpowers/hooks/*`
+  - Registered SessionStart hook in `settings.json` using `${AUGMENT_PLUGIN_ROOT}` variable
+  - Hook injects `using-superpowers` skill content at session start for auto-triggering skills
+
 - Added `rules/codegraph.md` - CodeGraph MCP usage guidance converted from submodule
   - Converted from Cursor-specific `.mdc` format to Augment-compatible `.md` format
   - Changed frontmatter: `alwaysApply: true` → `type: always_apply`

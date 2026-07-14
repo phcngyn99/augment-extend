@@ -106,6 +106,12 @@ echo "Rules..."
 echo "Agents..."
 create_symlink "../submodule/ECC/agents/e2e-runner.md" "agents/e2e-runner.md"
 
+# Hooks from superpowers submodule
+echo "Superpowers hooks..."
+create_symlink "../submodule/superpowers/hooks/hooks.json" "hooks/hooks.json"
+create_symlink "../submodule/superpowers/hooks/run-hook.cmd" "hooks/run-hook.cmd"
+create_symlink "../submodule/superpowers/hooks/session-start" "hooks/session-start"
+
 echo ""
 echo "Install complete."
 echo ""
