@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added ponytail rule symlink integration
-  - Created symlink: `rules/ponytail.md` → `submodule/ponytail/.agents/rules/ponytail.md`
-  - Updated setup script to include ponytail rules section
+### Removed
+
+- Removed `rules/codegraph-only.md` - CodeGraph enforcement policy no longer needed
+  - Removed symlink creation from setup script
+  - CodeGraph remains default code intelligence layer via tool permissions in settings.json
 
 - Added `rules/agent-browser-only.md` - Enforcement policy for using Agent Browser MCP tools exclusively for web interactions
   - Prohibits `web-fetch` (already denied in settings.json)

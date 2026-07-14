@@ -99,7 +99,6 @@ create_symlink "../submodule/impeccable/.agents/skills/impeccable" "skills/impec
 
 # Rules
 echo "Rules..."
-create_symlink "../rules/codegraph-only.md" "rules/codegraph-only.md"
 # Note: rules/caveman.md and rules/karpathy-guidelines.md removed to prevent
 # double-loading (skills/caveman is core, skills-lib/karpathy-guidelines is optional)
 
