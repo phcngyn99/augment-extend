@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added impeccable submodule integration (pbakaus/impeccable)
+  - Created symlink: `skills/impeccable` → `submodule/impeccable/.agents/skills/impeccable`
+  - Design guidance for AI coding agents: 1 skill with 23 commands, live browser iteration, and 45 deterministic detector rules
+  - Commands include: init, audit, polish, critique, shape, craft, animate, colorize, typeset, layout, bolder, quieter, distill, harden, onboard, delight, overdrive, clarify, adapt, optimize, live, document, extract
+  - Updated skill counts: 28 core → 29 core
+  - Updated README.md to reflect new skill count and impeccable description
+
 - Added `rules/agent-browser-only.md` - Enforcement policy for using Agent Browser MCP tools exclusively for web interactions
   - Prohibits `web-fetch` (already denied in settings.json)
   - Establishes fallback hierarchy: Agent Browser → Playwright → Never web-fetch
