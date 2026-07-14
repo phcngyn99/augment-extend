@@ -11,8 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added superpowers hooks integration (SessionStart hook)
   - Created symlinks: `hooks/hooks.json`, `hooks/run-hook.cmd`, `hooks/session-start` → `submodule/superpowers/hooks/*`
-  - Registered SessionStart hook in `settings.json` using `${AUGMENT_PLUGIN_ROOT}` variable
+  - Created `hooks/session-start.sh` - Unix wrapper with Augment-compatible JSON format (`hookSpecificOutput.additionalContext`)
+  - Registered SessionStart hook in `settings.json` using absolute path
   - Hook injects `using-superpowers` skill content at session start for auto-triggering skills
+  - Verified: `brainstorming` skill auto-triggers on "Let's make a react todo list" acceptance test
 
 - Added `rules/codegraph.md` - CodeGraph MCP usage guidance converted from submodule
   - Converted from Cursor-specific `.mdc` format to Augment-compatible `.md` format

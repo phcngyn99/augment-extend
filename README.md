@@ -19,11 +19,12 @@ Augment CLI extension — specialized agents, skills, workflows via 9 submodules
 ├── agents/              # e2e-runner.md, plan.md
 ├── skills/              # 29 core (symlinks to submodule/*/skills/*)
 ├── skills-lib/          # 7 optional (cavecrew, caveman-compress, domain-modeling, karpathy-guidelines, etc.)
-├── rules/               # codegraph-only.md
+├── rules/               # codegraph.md, ponytail.md, agent-browser-only.md, finn-guidelines.md
+├── hooks/               # SessionStart hook (superpowers integration)
 ├── scripts/             # install-to-augment.sh, setup-symlinks.sh
 ├── startup/             # show-workspace.sh, update-submodules.sh
 ├── submodule/           # 10 submodules (ECC, agent-browser, caveman, codegraph, ponytail, etc.)
-└── settings.json        # MCP servers, tool permissions
+└── settings.json        # MCP servers, tool permissions, hooks
 ```
 
 ## Prerequisites
@@ -143,7 +144,12 @@ See `skills-lib/README.md`.
 
 Denied: `codebase-retrieval`, `grep-search`, `web-fetch` → use CodeGraph.
 
-See `rules/codegraph-only.md`.
+### Hooks
+
+**SessionStart** — Injects `using-superpowers` skill content at session start, enabling auto-triggering of skills (brainstorming, TDD, etc.).
+
+- `hooks/session-start.sh` — Unix wrapper (Augment `hookSpecificOutput.additionalContext` format)
+- Symlinks to `submodule/superpowers/hooks/*`
 
 ### Startup Scripts
 
@@ -154,7 +160,7 @@ See `rules/codegraph-only.md`.
 
 ### Structure
 
-agents/, skills/, skills-lib/, rules/, scripts/, startup/, submodule/, settings.json
+agents/, skills/, skills-lib/, rules/, hooks/, scripts/, startup/, submodule/, settings.json
 
 ### Skill Placement
 
