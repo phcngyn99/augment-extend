@@ -1,0 +1,44 @@
+{
+  "indexingAllowDirs": [
+  ],
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "codegraph": {
+      "command": "npx",
+      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"]
+    },
+    "agent-browser": {
+      "command": "agent-browser",
+      "args": ["mcp", "--tools", "all"]
+    }
+  },
+  "notificationMode": "desktop_notification",
+  "startupScript": "~/.augment/startup/show-workspace.sh",
+  "autoUpdateMarketplaces": true,
+  "theme": "default-dark",
+  "toolPermissions": [
+    { "toolName": "codebase-retrieval", "permission": { "type": "deny" } },
+    { "toolName": "grep-search", "permission": { "type": "deny" } },
+    { "toolName": "web-fetch", "permission": { "type": "deny" } }
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/FinNguyen/.augment/hooks/run-hook.cmd session-start"
+          }
+        ]
+      }
+    ]
+  },
+  "verbose": false
+}
