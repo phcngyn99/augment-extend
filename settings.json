@@ -34,7 +34,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/FinNguyen/.augment/hooks/run-hook.cmd session-start"
+            "command": "/Users/FinNguyen/.augment/hooks/session-start.sh"
           }
         ]
       }

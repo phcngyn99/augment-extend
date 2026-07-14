@@ -112,6 +112,13 @@ create_symlink "../submodule/superpowers/hooks/hooks.json" "hooks/hooks.json"
 create_symlink "../submodule/superpowers/hooks/run-hook.cmd" "hooks/run-hook.cmd"
 create_symlink "../submodule/superpowers/hooks/session-start" "hooks/session-start"
 
+# Unix wrapper for session-start (Augment requires .sh extension on Unix)
+cat > hooks/session-start.sh << 'WRAPPER'
+#!/usr/bin/env bash
+exec bash "$(dirname "$0")/session-start" "$@"
+WRAPPER
+chmod +x hooks/session-start.sh
+
 echo ""
 echo "Install complete."
 echo ""
