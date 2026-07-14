@@ -1,0 +1,1 @@
+../submodule/ponytail/.agents/rules/ponytail.md

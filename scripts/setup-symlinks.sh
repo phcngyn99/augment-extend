@@ -89,6 +89,10 @@ create_symlink "../submodule/ponytail/skills/ponytail-gain" "skills/ponytail-gai
 create_symlink "../submodule/ponytail/skills/ponytail-help" "skills/ponytail-help"
 create_symlink "../submodule/ponytail/skills/ponytail-review" "skills/ponytail-review"
 
+# Rules from ponytail submodule
+echo "Ponytail rules..."
+create_symlink "../submodule/ponytail/.agents/rules/ponytail.md" "rules/ponytail.md"
+
 # Skills from impeccable submodule
 echo "Impeccable skills..."
 create_symlink "../submodule/impeccable/.agents/skills/impeccable" "skills/impeccable"
