@@ -1,27 +1,41 @@
 {
-  "indexingAllowDirs": [""],
+  "indexingAllowDirs": [
+  ],
   "mcpServers": {
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     },
     "codegraph": {
       "command": "npx",
-      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"],
-      "env": {
-        "CODEGRAPH_MCP_TOOLS": "explore,node,search,callers,callees,impact,files,status"
-      }
+      "args": [
+        "-y",
+        "@colbymchenry/codegraph",
+        "serve",
+        "--mcp"
+      ]
     },
     "agent-browser": {
       "command": "agent-browser",
-      "args": ["mcp", "--tools", "all"]
+      "args": [
+        "mcp",
+        "--tools",
+        "all"
+      ],
+      "disabled": true
     }
   },
-  "notificationMode": "desktop_notification",
+  "notificationMode": "bell",
   "startupScript": "~/.augment/startup/show-workspace.sh",
   "autoUpdateMarketplaces": true,
   "theme": "default-dark",
@@ -30,5 +44,18 @@
     { "toolName": "grep-search", "permission": { "type": "deny" } },
     { "toolName": "web-fetch", "permission": { "type": "deny" } }
   ],
-  "verbose": false
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.augment/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "verbose": false,
+  "model": "glm-5.2"
 }

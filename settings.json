@@ -1,25 +1,38 @@
 {
   "indexingAllowDirs": [
-    "/Users/FinNguyen/.cursor",
-    "/Users/FinNguyen/Work/not-finn/.cursor",
-    "/Users/FinNguyen/.augment"
   ],
   "mcpServers": {
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ]
     },
     "sequential-thinking": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
     },
     "codegraph": {
       "command": "npx",
-      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"]
+      "args": [
+        "-y",
+        "@colbymchenry/codegraph",
+        "serve",
+        "--mcp"
+      ]
     },
     "agent-browser": {
       "command": "agent-browser",
-      "args": ["mcp", "--tools", "all"]
+      "args": [
+        "mcp",
+        "--tools",
+        "all"
+      ],
+      "disabled": true
     }
   },
   "notificationMode": "bell",
@@ -37,7 +50,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/FinNguyen/.augment/hooks/session-start.sh"
+            "command": "~/.augment/hooks/session-start.sh"
           }
         ]
       }
