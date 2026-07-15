@@ -31,3 +31,6 @@
 [submodule "submodule/impeccable"]
 	path = submodule/impeccable
 	url = https://github.com/pbakaus/impeccable.git
+[submodule "submodule/destructive-command-guard"]
+	path = submodule/destructive-command-guard
+	url = https://github.com/Dicklesworthstone/destructive_command_guard.git

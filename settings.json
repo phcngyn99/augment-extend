@@ -1,5 +1,8 @@
 {
   "indexingAllowDirs": [
+    "/Users/FinNguyen/.cursor",
+    "/Users/FinNguyen/Work/not-finn/.cursor",
+    "/Users/FinNguyen/.augment"
   ],
   "mcpServers": {
     "context7": {
@@ -19,7 +22,7 @@
       "args": ["mcp", "--tools", "all"]
     }
   },
-  "notificationMode": "desktop_notification",
+  "notificationMode": "bell",
   "startupScript": "~/.augment/startup/show-workspace.sh",
   "autoUpdateMarketplaces": true,
   "theme": "default-dark",
@@ -40,5 +43,6 @@
       }
     ]
   },
-  "verbose": false
+  "verbose": false,
+  "model": "glm-5.2"
 }
