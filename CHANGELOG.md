@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added dcg (Destructive Command Guard) PreToolUse hook integration
+  - Created `hooks/dcg-pre-shell.py` - Python bridge that pipes Augment `launch-process` commands to dcg binary, translates dcg output to Augment's `hookSpecificOutput` protocol
+  - Registered PreToolUse hook in `settings.json` matching `launch-process` tool with 5s timeout
+  - Hook intercepts shell commands before execution, blocks destructive git/filesystem operations
+  - Fail-open on all error paths (malformed input, dcg missing, parse errors)
+  - Treats both `deny` and `ask` permission decisions as blocks (Augment only supports `deny`)
+
 - Added superpowers hooks integration (SessionStart hook)
   - Created symlinks: `hooks/hooks.json`, `hooks/run-hook.cmd`, `hooks/session-start` → `submodule/superpowers/hooks/*`
   - Created `hooks/session-start.sh` - Unix wrapper with Augment-compatible JSON format (`hookSpecificOutput.additionalContext`)
