@@ -33,6 +33,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added obsidian-skills submodule (`submodule/obsidian-skills`) — 5 new core skills for Obsidian workflows
+  - `skills/defuddle` → `submodule/obsidian-skills/skills/defuddle`
+  - `skills/json-canvas` → `submodule/obsidian-skills/skills/json-canvas`
+  - `skills/obsidian-bases` → `submodule/obsidian-skills/skills/obsidian-bases`
+  - `skills/obsidian-cli` → `submodule/obsidian-skills/skills/obsidian-cli`
+  - `skills/obsidian-markdown` → `submodule/obsidian-skills/skills/obsidian-markdown`
+  - Updated counts: README.md (23 → 28 core skills, 11 → 12 submodules), AGENTS.md (23 → 28 core, 11 → 12 submodules)
+  - Wired symlink creation in `scripts/setup-symlinks.sh`
+
 - Added dcg (Destructive Command Guard) PreToolUse hook integration
   - Created `hooks/dcg-pre-shell.py` - Python bridge that pipes Augment `launch-process` commands to dcg binary, translates dcg output to Augment's `hookSpecificOutput` protocol
   - Registered PreToolUse hook in `settings.json` matching `launch-process` tool with 5s timeout

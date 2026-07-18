@@ -34,3 +34,6 @@
 [submodule "submodule/destructive-command-guard"]
 	path = submodule/destructive-command-guard
 	url = https://github.com/Dicklesworthstone/destructive_command_guard.git
+[submodule "submodule/obsidian-skills"]
+	path = submodule/obsidian-skills
+	url = https://github.com/kepano/obsidian-skills.git

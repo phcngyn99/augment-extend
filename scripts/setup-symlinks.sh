@@ -120,6 +120,14 @@ create_symlink "../submodule/superpowers/skills/writing-skills" "skills/writing-
 echo "ECC skills..."
 create_symlink "../submodule/ECC/skills/deep-research" "skills/deep-research"
 
+# Skills from obsidian-skills submodule
+echo "Obsidian skills..."
+create_symlink "../submodule/obsidian-skills/skills/defuddle" "skills/defuddle"
+create_symlink "../submodule/obsidian-skills/skills/json-canvas" "skills/json-canvas"
+create_symlink "../submodule/obsidian-skills/skills/obsidian-bases" "skills/obsidian-bases"
+create_symlink "../submodule/obsidian-skills/skills/obsidian-cli" "skills/obsidian-cli"
+create_symlink "../submodule/obsidian-skills/skills/obsidian-markdown" "skills/obsidian-markdown"
+
 # Skills from skills submodule
 echo "Matt Pocock skills..."
 create_symlink "../submodule/skills/skills/productivity/handoff" "skills/handoff"
