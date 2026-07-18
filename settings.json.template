@@ -35,7 +35,7 @@
     }
   },
   "notificationMode": "bell",
-  "startupScript": "~/.augment/startup/show-workspace.sh",
+  "startupScript": "~/.augment/scripts/show-workspace.sh",
   "autoUpdateMarketplaces": true,
   "theme": "default-dark",
   "toolPermissions": [

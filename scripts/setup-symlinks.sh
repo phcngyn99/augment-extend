@@ -2,6 +2,26 @@
 
 set -e
 
+# Parse arguments
+NUKE=false
+for arg in "$@"; do
+    case "$arg" in
+        --nuke)
+            NUKE=true
+            ;;
+        -h|--help)
+            echo "Usage: $0 [--nuke]"
+            echo "  --nuke  Wipe skills/, rules/, hooks/ completely, then recreate symlinks + restore real files from scripts/store/"
+            exit 0
+            ;;
+        *)
+            echo "Unknown flag: $arg"
+            echo "Usage: $0 [--nuke]"
+            exit 1
+            ;;
+    esac
+done
+
 echo "Install Augment config..."
 echo ""
 
@@ -12,6 +32,19 @@ if git submodule status | grep -q '^-'; then
     git submodule update --init --recursive
 else
     echo "Submodules OK"
+fi
+
+# Resolve store dir (source of truth for non-symlink files)
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+STORE_DIR="$SCRIPT_DIR/store"
+
+# --nuke: wipe skills/, rules/, hooks/ completely before recreating
+if [[ "$NUKE" == true ]]; then
+    echo ""
+    echo "Nuke: wiping skills/, rules/, hooks/..."
+    rm -rf skills/* rules/* hooks/* 2>/dev/null || true
+    # remove hidden files too
+    find skills/ rules/ hooks/ -mindepth 1 -maxdepth 1 -name ".*" -exec rm -rf {} + 2>/dev/null || true
 fi
 
 # Create symlinks helper function
@@ -31,6 +64,23 @@ create_symlink() {
 
     ln -s "$target" "$link"
     echo "  $link -> $target"
+}
+
+# Restore non-symlink files from scripts/store/ (source of truth for real files)
+# Mirrors store structure: store/skills/* → skills/, store/rules/* → rules/, store/hooks/* → hooks/
+restore_store() {
+    local sub=$1   # e.g. "skills"
+    local src="$STORE_DIR/$sub"
+    local dst="$sub"
+
+    if [[ ! -d "$src" ]]; then
+        return 0
+    fi
+
+    mkdir -p "$dst"
+    # cp -a preserves perms + handles files and subdirs
+    cp -a "$src/." "$dst/"
+    echo "  restored $dst/ from $src/"
 }
 
 echo ""
@@ -66,6 +116,10 @@ create_symlink "../submodule/superpowers/skills/verification-before-completion" 
 create_symlink "../submodule/superpowers/skills/writing-plans" "skills/writing-plans"
 create_symlink "../submodule/superpowers/skills/writing-skills" "skills/writing-skills"
 
+# Skills from ECC submodule
+echo "ECC skills..."
+create_symlink "../submodule/ECC/skills/deep-research" "skills/deep-research"
+
 # Skills from skills submodule
 echo "Matt Pocock skills..."
 create_symlink "../submodule/skills/skills/productivity/handoff" "skills/handoff"
@@ -80,25 +134,13 @@ create_symlink "../submodule/skills/skills/engineering/domain-modeling" "skills-
 echo "Karpathy optional skills..."
 create_symlink "../submodule/andrej-karpathy-skills/skills/karpathy-guidelines" "skills-lib/karpathy-guidelines"
 
-# Skills from ponytail submodule
-echo "Ponytail skills..."
-create_symlink "../submodule/ponytail/skills/ponytail" "skills/ponytail"
-create_symlink "../submodule/ponytail/skills/ponytail-audit" "skills/ponytail-audit"
-create_symlink "../submodule/ponytail/skills/ponytail-debt" "skills/ponytail-debt"
-create_symlink "../submodule/ponytail/skills/ponytail-gain" "skills/ponytail-gain"
-create_symlink "../submodule/ponytail/skills/ponytail-help" "skills/ponytail-help"
-create_symlink "../submodule/ponytail/skills/ponytail-review" "skills/ponytail-review"
-
-# Rules from ponytail submodule
-echo "Ponytail rules..."
-create_symlink "../submodule/ponytail/.agents/rules/ponytail.md" "rules/ponytail.md"
-
 # Skills from impeccable submodule
 echo "Impeccable skills..."
 create_symlink "../submodule/impeccable/.agents/skills/impeccable" "skills/impeccable"
 
 # Rules
 echo "Rules..."
+create_symlink "../submodule/ponytail/.agents/rules/ponytail.md" "rules/ponytail.md"
 # Note: rules/caveman.md and rules/karpathy-guidelines.md removed to prevent
 # double-loading (skills/caveman is core, skills-lib/karpathy-guidelines is optional)
 
@@ -146,6 +188,15 @@ printf '{\n  "hookSpecificOutput": {\n    "hookEventName": "SessionStart",\n    
 exit 0
 WRAPPER
 chmod +x hooks/session-start.sh
+
+# Restore non-symlink files from store (browse-skills/SKILL.md, rules/*.md, hooks/dcg-pre-shell.py)
+echo ""
+echo "Restore real files from store..."
+restore_store "skills"
+restore_store "rules"
+restore_store "hooks"
+# Ensure hook scripts stay executable
+[[ -f hooks/dcg-pre-shell.py ]] && chmod +x hooks/dcg-pre-shell.py
 
 echo ""
 echo "Install complete."

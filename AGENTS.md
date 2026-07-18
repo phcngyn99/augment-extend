@@ -15,7 +15,7 @@ type: always_apply
 ## Skills Management
 
 - Skills are organized in two locations:
-  - `skills/` - Core skills (29 total), always loaded, mostly symlinked from submodules
+  - `skills/` - Core skills (23 total), always loaded, mostly symlinked from submodules
   - `skills-lib/` - Optional skills (6 total), loaded on-demand, requires manual activation
 - When adding new skills:
   - Create symlinks, don't copy files: `ln -s ../submodule/<name>/skills/<skill> skills/<skill>`
@@ -32,7 +32,7 @@ type: always_apply
 
 ## Submodules
 
-- All submodules are in `submodule/` directory (9 total: ECC, agent-browser, caveman, codegraph, ponytail, ppt-master, skills, superpowers, ui-ux-pro-max-skill)
+- All submodules are in `submodule/` directory (11 total: ECC, agent-browser, caveman, codegraph, ponytail, impeccable, ppt-master, skills, superpowers, ui-ux-pro-max-skill, destructive-command-guard)
 - When updating submodules:
   - Use `git submodule update --remote <submodule-name>` for targeted updates
   - Test symlinks still work after updates

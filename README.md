@@ -1,10 +1,10 @@
 # Augment Extend
 
-Augment CLI extension — specialized agents, skills, workflows via 9 submodules.
+Augment CLI extension — specialized agents, skills, workflows via 11 submodules.
 
 ## Overview
 
-- **29 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, ponytail (YAGNI enforcement), impeccable (design guidance)
+- **23 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, impeccable (design guidance)
 - **7 Optional Skills** (on-demand) — cavecrew, caveman-compress, domain-modeling, grilling, grill-with-docs, karpathy-guidelines, ppt-master
 - **8 Subagents** — explore, research, code, validate, e2e-runner, auggie-guide, general-purpose, plan
 - **CodeGraph MCP** — Structural code intelligence (replaces codebase-retrieval)
@@ -17,13 +17,12 @@ Augment CLI extension — specialized agents, skills, workflows via 9 submodules
 ```
 ~/.augment/
 ├── agents/              # e2e-runner.md, plan.md
-├── skills/              # 29 core (symlinks to submodule/*/skills/*)
+├── skills/              # 23 core (symlinks to submodule/*/skills/*)
 ├── skills-lib/          # 7 optional (cavecrew, caveman-compress, domain-modeling, karpathy-guidelines, etc.)
 ├── rules/               # codegraph.md, ponytail.md, agent-browser-only.md, finn-guidelines.md
 ├── hooks/               # SessionStart hook (superpowers integration)
-├── scripts/             # install-to-augment.sh, setup-symlinks.sh
-├── startup/             # show-workspace.sh, update-submodules.sh
-├── submodule/           # 10 submodules (ECC, agent-browser, caveman, codegraph, ponytail, etc.)
+├── scripts/             # install-to-augment.sh, setup-symlinks.sh, show-workspace.sh, update-submodules.sh, store/
+├── submodule/           # 11 submodules (ECC, agent-browser, caveman, codegraph, ponytail, impeccable, etc.)
 └── settings.json        # MCP servers, tool permissions, hooks
 ```
 
@@ -52,7 +51,7 @@ Does: verify Auggie, copy to `~/.augment`, init 10 submodules, create symlinks, 
 ```bash
 cd ~/.augment
 git pull
-~/.augment/startup/update-submodules.sh
+~/.augment/scripts/update-submodules.sh
 ~/.augment/scripts/setup-symlinks.sh  # if new skills/agents
 ```
 
@@ -101,9 +100,9 @@ Needs Python 3.10+ (same as Auggie).
 
 ## Skills
 
-### Core (29 always-on)
+### Core (23 always-on)
 
-brainstorming, caveman, caveman-commit, caveman-help, caveman-review, caveman-stats, deep-research, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, handoff, karpathy-guidelines, ponytail, ponytail-audit, ponytail-debt, ponytail-gain, ponytail-help, ponytail-review, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills.
+brainstorming, caveman, caveman-commit, caveman-help, caveman-review, caveman-stats, deep-research, dispatching-parallel-agents, executing-plans, finishing-a-development-branch, handoff, impeccable, karpathy-guidelines, receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging, test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans, writing-skills.
 
 Use `browse-skills` to discover optional.
 
@@ -160,7 +159,7 @@ Denied: `codebase-retrieval`, `grep-search`, `web-fetch` → use CodeGraph.
 
 ### Structure
 
-agents/, skills/, skills-lib/, rules/, hooks/, scripts/, startup/, submodule/, settings.json
+agents/, skills/, skills-lib/, rules/, hooks/, scripts/, submodule/, settings.json
 
 ### Skill Placement
 
@@ -170,7 +169,7 @@ agents/, skills/, skills-lib/, rules/, hooks/, scripts/, startup/, submodule/, s
 ### Update Submodules
 
 ```bash
-~/.augment/startup/update-submodules.sh
+~/.augment/scripts/update-submodules.sh
 # Or specific: cd ~/.augment/submodule/<name> && git pull
 ```
 

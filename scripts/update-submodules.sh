@@ -14,7 +14,7 @@ REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # Dry run mode - just show instruction
 if [[ "$DRY_RUN" == true ]]; then
-    echo "To update submodules run: $REPO_DIR/startup/update-submodules.sh"
+    echo "To update submodules run: $REPO_DIR/scripts/update-submodules.sh"
     exit 0
 fi
 

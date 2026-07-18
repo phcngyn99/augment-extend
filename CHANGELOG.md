@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Removed ponytail skills, kept only the rule (sourced from `submodule/ponytail`)
+  - Removed 6 skill symlinks: `skills/ponytail`, `skills/ponytail-audit`, `skills/ponytail-debt`, `skills/ponytail-gain`, `skills/ponytail-help`, `skills/ponytail-review`
+  - Retained `submodule/ponytail` and `rules/ponytail.md` symlink → `submodule/ponytail/.agents/rules/ponytail.md` (the lazy-senior-dev rule stays)
+  - Removed ponytail skill symlink creation from `scripts/setup-symlinks.sh` (kept rules symlink line)
+  - Updated counts: README.md (29 → 23 core skills), AGENTS.md (29 → 23 core skills)
+  - Added `--nuke` flag to `scripts/setup-symlinks.sh` — wipes `skills/`, `rules/`, `hooks/` completely, then recreates symlinks and restores non-symlink files from `scripts/store/`
+  - Introduced `scripts/store/` as source of truth for non-symlink files (moved via `git mv`):
+    - `scripts/store/skills/browse-skills/SKILL.md`
+    - `scripts/store/rules/{agent-browser-only,caveman-active,codegraph,finn-guidelines}.md`
+    - `scripts/store/hooks/dcg-pre-shell.py`
+  - Script always restores real files from store at end of run (idempotent); `session-start.sh` stays heredoc-generated
+
+### Changed
+
+- Merged `startup/` into `scripts/` (both held shell utilities, semantic-only split)
+  - `git mv startup/show-workspace.sh scripts/show-workspace.sh`
+  - `git mv startup/update-submodules.sh scripts/update-submodules.sh`
+  - Removed `startup/` directory
+  - Updated `settings.json` + `settings.json.template` `startupScript` path → `~/.augment/scripts/show-workspace.sh`
+  - Updated `README.md` (architecture tree, update command, structure list) + `scripts/update-submodules.sh` self-reference
+
 ### Added
 
 - Added dcg (Destructive Command Guard) PreToolUse hook integration

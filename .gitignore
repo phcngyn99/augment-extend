@@ -8,3 +8,11 @@ prompt-history.jsonl
 checkpoint-documents
 untruncated
 .codegraph
+
+# Restored from scripts/store/ by setup-symlinks.sh (build artifacts, not source of truth)
+skills/browse-skills/
+rules/agent-browser-only.md
+rules/caveman-active.md
+rules/codegraph.md
+rules/finn-guidelines.md
+hooks/dcg-pre-shell.py
