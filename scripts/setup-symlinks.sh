@@ -11,7 +11,7 @@ for arg in "$@"; do
             ;;
         -h|--help)
             echo "Usage: $0 [--nuke]"
-            echo "  --nuke  Wipe skills/, rules/, hooks/ completely, then recreate symlinks + restore real files from scripts/store/"
+            echo "  --nuke  Wipe skills/, rules/, hooks/, agents/ completely, then recreate symlinks + restore real files from scripts/store/"
             exit 0
             ;;
         *)
@@ -38,13 +38,13 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 STORE_DIR="$SCRIPT_DIR/store"
 
-# --nuke: wipe skills/, rules/, hooks/ completely before recreating
+# --nuke: wipe skills/, rules/, hooks/, agents/ completely before recreating
 if [[ "$NUKE" == true ]]; then
     echo ""
-    echo "Nuke: wiping skills/, rules/, hooks/..."
-    rm -rf skills/* rules/* hooks/* 2>/dev/null || true
+    echo "Nuke: wiping skills/, rules/, hooks/, agents/..."
+    rm -rf skills/* rules/* hooks/* agents/* 2>/dev/null || true
     # remove hidden files too
-    find skills/ rules/ hooks/ -mindepth 1 -maxdepth 1 -name ".*" -exec rm -rf {} + 2>/dev/null || true
+    find skills/ rules/ hooks/ agents/ -mindepth 1 -maxdepth 1 -name ".*" -exec rm -rf {} + 2>/dev/null || true
 fi
 
 # Create symlinks helper function
@@ -195,6 +195,7 @@ echo "Restore real files from store..."
 restore_store "skills"
 restore_store "rules"
 restore_store "hooks"
+restore_store "agents"
 # Ensure hook scripts stay executable
 [[ -f hooks/dcg-pre-shell.py ]] && chmod +x hooks/dcg-pre-shell.py
 

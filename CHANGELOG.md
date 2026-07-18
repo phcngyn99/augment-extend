@@ -14,11 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Retained `submodule/ponytail` and `rules/ponytail.md` symlink → `submodule/ponytail/.agents/rules/ponytail.md` (the lazy-senior-dev rule stays)
   - Removed ponytail skill symlink creation from `scripts/setup-symlinks.sh` (kept rules symlink line)
   - Updated counts: README.md (29 → 23 core skills), AGENTS.md (29 → 23 core skills)
-  - Added `--nuke` flag to `scripts/setup-symlinks.sh` — wipes `skills/`, `rules/`, `hooks/` completely, then recreates symlinks and restores non-symlink files from `scripts/store/`
+  - Added `--nuke` flag to `scripts/setup-symlinks.sh` — wipes `skills/`, `rules/`, `hooks/`, `agents/` completely, then recreates symlinks and restores non-symlink files from `scripts/store/`
   - Introduced `scripts/store/` as source of truth for non-symlink files (moved via `git mv`):
     - `scripts/store/skills/browse-skills/SKILL.md`
     - `scripts/store/rules/{agent-browser-only,caveman-active,codegraph,finn-guidelines}.md`
     - `scripts/store/hooks/dcg-pre-shell.py`
+    - `scripts/store/agents/plan.md`
   - Script always restores real files from store at end of run (idempotent); `session-start.sh` stays heredoc-generated
 
 ### Changed

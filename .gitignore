@@ -16,3 +16,4 @@ rules/caveman-active.md
 rules/codegraph.md
 rules/finn-guidelines.md
 hooks/dcg-pre-shell.py
+agents/plan.md
