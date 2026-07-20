@@ -27,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `PreToolUse.command`: `~/.augment/hooks/dcg-pre-shell.py` → `~/.augment/hooks/dcg-pre-shell.sh` (template was stale, live uses the `.sh` wrapper)
   - Added `grep-search` and `web-fetch` denies to `toolPermissions` in both files to match `rules/agent-browser-only.md` policy claims
   - Only remaining diff between template and live is `indexingAllowDirs` (template ships `[]`, live has the user's workspace path) — expected
+- Moved `hooks/dcg-pre-shell.sh` into `scripts/store/hooks/` (source of truth for non-symlink files)
+  - `--nuke` flag previously wiped this file since it wasn't in `store/`; now restored alongside `dcg-pre-shell.py`
+  - Added `hooks/dcg-pre-shell.sh` to `.gitignore` (build artifact, regenerated from store)
+  - Updated `scripts/setup-symlinks.sh`: chmod for `.sh` wrappers (`dcg-pre-shell.sh`, `session-start.sh`)
   - Added `--nuke` flag to `scripts/setup-symlinks.sh` — wipes `skills/`, `rules/`, `hooks/`, `agents/` completely, then recreates symlinks and restores non-symlink files from `scripts/store/`
   - Introduced `scripts/store/` as source of truth for non-symlink files (moved via `git mv`):
     - `scripts/store/skills/browse-skills/SKILL.md`

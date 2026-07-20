@@ -196,7 +196,7 @@ exit 0
 WRAPPER
 chmod +x hooks/session-start.sh
 
-# Restore non-symlink files from store (browse-skills/SKILL.md, rules/*.md, hooks/dcg-pre-shell.py)
+# Restore non-symlink files from store (browse-skills/SKILL.md, rules/*.md, hooks/dcg-pre-shell.{py,sh})
 echo ""
 echo "Restore real files from store..."
 restore_store "skills"
@@ -205,6 +205,8 @@ restore_store "hooks"
 restore_store "agents"
 # Ensure hook scripts stay executable
 [[ -f hooks/dcg-pre-shell.py ]] && chmod +x hooks/dcg-pre-shell.py
+[[ -f hooks/dcg-pre-shell.sh ]] && chmod +x hooks/dcg-pre-shell.sh
+[[ -f hooks/session-start.sh ]] && chmod +x hooks/session-start.sh
 
 echo ""
 echo "Install complete."
