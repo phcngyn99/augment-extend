@@ -63,14 +63,32 @@ rsync -av \
 echo "Copy complete."
 echo ""
 
-# Copy settings.json.template to settings.json
+# Setup settings.json from template (ARM64 uses arm-template, else normal template)
 echo "Setup settings.json from template..."
 cd "$AUGMENT_DIR"
-if [ -f "settings.json.template" ]; then
-    cp settings.json.template settings.json
-    echo "settings.json created from template."
+ARCH="$(uname -m)"
+if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
+    if [ -f "settings.json.arm-template" ]; then
+        cp settings.json.arm-template settings.json
+        # Replace <USER> placeholder with current user's home
+        sed -i "s|/home/<USER>/|$HOME/|g" settings.json
+        echo "settings.json created from ARM template (arch=$ARCH)."
+        echo "NOTE: chromium version dir (e.g. chromium-1228) is pinned to Playwright 1.61."
+        echo "      If Playwright upgraded, run 'npx playwright install chromium' and update"
+        echo "      --executable-path in settings.json to match the new version dir."
+    elif [ -f "settings.json.template" ]; then
+        echo "WARN: settings.json.arm-template not found. Falling back to normal template (may not work on ARM64)."
+        cp settings.json.template settings.json
+    else
+        echo "WARN: no settings.json template found."
+    fi
 else
-    echo "WARN: settings.json.template not found."
+    if [ -f "settings.json.template" ]; then
+        cp settings.json.template settings.json
+        echo "settings.json created from normal template (arch=$ARCH)."
+    else
+        echo "WARN: settings.json.template not found."
+    fi
 fi
 echo ""
 

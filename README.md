@@ -79,6 +79,20 @@ agent-browser upgrade
 
 Used by e2e-runner subagent (preferred) or Playwright fallback.
 
+### Playwright MCP (E2E fallback)
+
+Two `settings.json` templates ship:
+- `settings.json.template` — normal/x64 (uses `--browser chrome` channel)
+- `settings.json.arm-template` — ARM64/Jetson (uses `--executable-path` to bundled chromium; see `docs/playwright-arm64-jetson.md`)
+
+ARM64 Jetson requires the bundled-chromium path — `chrome` channel needs sudo install of Google Chrome. Install bundled chromium with:
+
+```bash
+npx playwright install chromium  # ARM64-native, no sudo, user cache
+```
+
+Update `--executable-path` in `settings.json` after Playwright upgrades (version dir name changes, e.g. `chromium-1228` → `chromium-1234`).
+
 ### UI/UX Pro Max
 
 ```bash

@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Playwright MCP server to `settings.json` (`mcpServers.playwright`) — ARM64 Jetson config
+  - Uses Playwright's bundled ARM64 chromium via `--executable-path`
+  - Flags: `--headless --no-sandbox --ignore-https-errors --executable-path /home/wanek3/.cache/ms-playwright/chromium-1228/chrome-linux/chrome`
+  - **Why `--executable-path` is required on ARM64:** `@playwright/mcp` only supports `--browser` values `chrome`, `firefox`, `webkit`, `msedge` (no `chromium` channel). `chrome` channel looks for Google Chrome at `/opt/google/chrome/chrome` (sudo install, fails on ARM64 Jetson). Only working path = bundled chromium via `--executable-path`.
+- Two `settings.json` templates:
+  - `settings.json.template` — normal/x64 systems. Uses `--browser chrome` channel.
+  - `settings.json.arm-template` — ARM64/Jetson. Uses `--executable-path` to bundled chromium. Contains `<USER>` placeholder + `chromium-1228` version dir (adjust per install + after Playwright upgrades).
+- Updated `scripts/install-to-augment.sh` to auto-select template by architecture
+  - Detects `aarch64`/`arm64` via `uname -m` → uses `settings.json.arm-template`
+  - Falls back to `settings.json.template` on other archs (x64)
+  - On ARM, runs `sed` to replace `/home/<USER>/` with actual `$HOME` path in the copied `settings.json`
+  - Prints warning if Playwright upgraded (chromium version dir changes — user must update `--executable-path`)
+
+### Changed
+
+- Rewrote `docs/playwright-arm64-jetson.md` based on verified testing (2026-07-20)
+  - Original snap-chromium approach fails on this device: `snap-confine` can't get `cap_dac_override` capability → snap browsers (brave, chromium) won't launch
+  - New working path: Playwright bundled chromium (already installed in user cache)
+  - Added "What Works Here" / "What Does NOT Work Here" sections with test evidence
+  - Updated config snippet, test commands, troubleshooting, and "Why Bundled Chromium" rationale
+  - Documented corporate web filter 503 blocking as a network issue, not Playwright
+
 ### Removed
 
 - Removed ponytail skills, kept only the rule (sourced from `submodule/ponytail`)

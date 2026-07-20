@@ -38,11 +38,11 @@
       "args": [
         "-y",
         "@playwright/mcp@latest",
-        "--browser",
-        "chrome",
         "--headless",
         "--no-sandbox",
-        "--ignore-https-errors"
+        "--ignore-https-errors",
+        "--executable-path",
+        "/home/<USER>/.cache/ms-playwright/chromium-1228/chrome-linux/chrome"
       ]
     }
   },
