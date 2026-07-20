@@ -147,10 +147,9 @@ echo "Impeccable skills..."
 create_symlink "../submodule/impeccable/.agents/skills/impeccable" "skills/impeccable"
 
 # Rules
-echo "Rules..."
-create_symlink "../submodule/ponytail/.agents/rules/ponytail.md" "rules/ponytail.md"
 # Note: rules/caveman.md and rules/karpathy-guidelines.md removed to prevent
 # double-loading (skills/caveman is core, skills-lib/karpathy-guidelines is optional)
+# Note: ponytail rule removed — submodule/ponytail dropped from this workspace.
 
 # Agents
 echo "Agents..."

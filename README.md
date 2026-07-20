@@ -19,10 +19,10 @@ Augment CLI extension — specialized agents, skills, workflows via 12 submodule
 ├── agents/              # e2e-runner.md, plan.md
 ├── skills/              # 28 core (symlinks to submodule/*/skills/*)
 ├── skills-lib/          # 7 optional (cavecrew, caveman-compress, domain-modeling, karpathy-guidelines, etc.)
-├── rules/               # codegraph.md, ponytail.md, agent-browser-only.md, finn-guidelines.md
+├── rules/               # codegraph.md, agent-browser-only.md, finn-guidelines.md, caveman-active.md
 ├── hooks/               # SessionStart hook (superpowers integration)
 ├── scripts/             # install-to-augment.sh, setup-symlinks.sh, show-workspace.sh, update-submodules.sh, store/
-├── submodule/           # 12 submodules (ECC, agent-browser, caveman, codegraph, ponytail, impeccable, obsidian-skills, etc.)
+├── submodule/           # 11 submodules (ECC, agent-browser, caveman, codegraph, impeccable, obsidian-skills, etc.)
 └── settings.json        # MCP servers, tool permissions, hooks
 ```
 

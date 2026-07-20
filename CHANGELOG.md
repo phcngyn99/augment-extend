@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Retained `submodule/ponytail` and `rules/ponytail.md` symlink → `submodule/ponytail/.agents/rules/ponytail.md` (the lazy-senior-dev rule stays)
   - Removed ponytail skill symlink creation from `scripts/setup-symlinks.sh` (kept rules symlink line)
   - Updated counts: README.md (29 → 23 core skills), AGENTS.md (29 → 23 core skills)
+- Removed ponytail rule and `submodule/ponytail` entirely (lazy-senior-dev mode dropped)
+  - `git submodule deinit -f submodule/ponytail` then `git rm -f submodule/ponytail rules/ponytail.md`
+  - Removed `rules/ponytail.md` symlink (target gone)
+  - Removed ponytail rule symlink creation from `scripts/setup-symlinks.sh`
+  - Updated README.md (12 → 11 submodules, rules list no longer mentions `ponytail.md`)
+  - Updated AGENTS.md (12 → 11 submodules, ponytail dropped from submodule list)
   - Added `--nuke` flag to `scripts/setup-symlinks.sh` — wipes `skills/`, `rules/`, `hooks/`, `agents/` completely, then recreates symlinks and restores non-symlink files from `scripts/store/`
   - Introduced `scripts/store/` as source of truth for non-symlink files (moved via `git mv`):
     - `scripts/store/skills/browse-skills/SKILL.md`

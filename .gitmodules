@@ -25,9 +25,6 @@
 [submodule "submodule/ppt-master"]
 	path = submodule/ppt-master
 	url = https://github.com/hugohe3/ppt-master
-[submodule "submodule/ponytail"]
-	path = submodule/ponytail
-	url = https://github.com/DietrichGebert/ponytail.git
 [submodule "submodule/impeccable"]
 	path = submodule/impeccable
 	url = https://github.com/pbakaus/impeccable.git
