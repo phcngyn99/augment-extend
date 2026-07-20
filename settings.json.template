@@ -39,7 +39,9 @@
   "autoUpdateMarketplaces": true,
   "theme": "default-dark",
   "toolPermissions": [
-    { "toolName": "codebase-retrieval", "permission": { "type": "deny" } }
+    { "toolName": "codebase-retrieval", "permission": { "type": "deny" } },
+    { "toolName": "grep-search", "permission": { "type": "deny" } },
+    { "toolName": "web-fetch", "permission": { "type": "deny" } }
   ],
   "hooks": {
     "SessionStart": [
@@ -58,7 +60,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.augment/hooks/dcg-pre-shell.py",
+            "command": "~/.augment/hooks/dcg-pre-shell.sh",
             "timeout": 5000
           }
         ]

@@ -20,6 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed ponytail rule symlink creation from `scripts/setup-symlinks.sh`
   - Updated README.md (12 → 11 submodules, rules list no longer mentions `ponytail.md`)
   - Updated AGENTS.md (12 → 11 submodules, ponytail dropped from submodule list)
+
+### Changed
+
+- Synced `settings.json.template` with live `settings.json`
+  - `PreToolUse.command`: `~/.augment/hooks/dcg-pre-shell.py` → `~/.augment/hooks/dcg-pre-shell.sh` (template was stale, live uses the `.sh` wrapper)
+  - Added `grep-search` and `web-fetch` denies to `toolPermissions` in both files to match `rules/agent-browser-only.md` policy claims
+  - Only remaining diff between template and live is `indexingAllowDirs` (template ships `[]`, live has the user's workspace path) — expected
   - Added `--nuke` flag to `scripts/setup-symlinks.sh` — wipes `skills/`, `rules/`, `hooks/`, `agents/` completely, then recreates symlinks and restores non-symlink files from `scripts/store/`
   - Introduced `scripts/store/` as source of truth for non-symlink files (moved via `git mv`):
     - `scripts/store/skills/browse-skills/SKILL.md`
