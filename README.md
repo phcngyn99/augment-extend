@@ -69,6 +69,8 @@ codegraph upgrade  # update
 
 Tools: explore, node, search, callers, callees, impact, files.
 
+**MCP wiring:** `settings.json` invokes the installed `codegraph` binary directly (`"command": "codegraph"`), not `npx -y @colbymchenry/codegraph`. The `npx` form re-downloads package metadata on every Auggie startup → MCP `-32001: Request timed out` on slow/corporate networks. The binary form resolves from PATH (already on `/usr/bin/codegraph` after install) and starts in ~1s.
+
 ### Agent Browser (E2E)
 
 ```bash

@@ -7,7 +7,7 @@ This guide covers Playwright MCP setup for ARM64. The original plan (use snap ch
 
 ## What Works Here (verified)
 
-- `@playwright/mcp@latest` (v1.62.0) launches as MCP server
+- `@playwright/mcp` (v0.0.78) launches as MCP server (resolved from global install; no `@latest` registry fetch)
 - 24 MCP tools exposed (`browser_navigate`, `browser_snapshot`, `browser_close`, `browser_evaluate`, etc.)
 - Bundled chromium at `~/.cache/ms-playwright/chromium-1228/chrome-linux/chrome` runs on ARM64
 - Bundled firefox at `~/.cache/ms-playwright/firefox-1532/firefox` also works (but MCP `--browser firefox` channel fails — needs MCP-specific browser install)
@@ -52,8 +52,7 @@ Add to `~/.augment/settings.json` under `mcpServers`:
 "playwright": {
   "command": "npx",
   "args": [
-    "-y",
-    "@playwright/mcp@latest",
+    "@playwright/mcp",
     "--headless",
     "--no-sandbox",
     "--ignore-https-errors",
@@ -62,6 +61,8 @@ Add to `~/.augment/settings.json` under `mcpServers`:
   ]
 }
 ```
+
+**Why no `-y` or `@latest`:** `npx -y @pkg@latest` forces npm registry metadata fetch on every startup — on slow/corporate networks this hangs >30s and MCP startup times out (`-32001: Request timed out`). Dropping both flags makes `npx` resolve from the globally installed package (no registry fetch, ~1.3s startup). Requires `sudo npm i -g @playwright/mcp` once.
 
 **Why `--executable-path` is required on this device:**
 
@@ -113,7 +114,7 @@ Expected: prints TITLE + URL + `PASS`. (External URLs may return 503 from corpor
 ### 2. MCP server smoke test (with the exact settings.json arg set)
 
 ```bash
-npx -y @playwright/mcp@latest --headless --no-sandbox --ignore-https-errors --executable-path ~/.cache/ms-playwright/chromium-1228/chrome-linux/chrome --help | head -20
+npx @playwright/mcp --headless --no-sandbox --ignore-https-errors --executable-path ~/.cache/ms-playwright/chromium-1228/chrome-linux/chrome --help | head -20
 ```
 
 Expected: prints Playwright MCP usage / options list. If `--help` works, the server launches successfully with bundled chromium.
@@ -189,7 +190,7 @@ Expected: Page snapshot with accessibility tree (element refs like `[ref=e2]`).
 
 **MCP server not loading**
 - Check JSON syntax in `settings.json` (one trailing comma breaks it)
-- Test directly: `npx -y @playwright/mcp@latest --help`
+- Test directly: `npx @playwright/mcp --help`
 - Check `~/.augment/logs/` if present
 
 ## Why Bundled Chromium (not snap)

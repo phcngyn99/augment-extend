@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- CodeGraph MCP server now launched via local binary instead of `npx` (`settings.json`, `settings.json.template`, `settings.json.arm-template`)
+  - **Before:** `"command": "npx", "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"]`
+  - **After:** `"command": "codegraph", "args": ["serve", "--mcp"]`
+  - **Root cause:** `npx -y @colbymchenry/codegraph` re-resolves package metadata from npm registry on every Auggie startup. On 7.9GB index (3M nodes, 7.9M edges, entire `$HOME` indexed), startup budget was exceeded → `MCP error -32001: Request timed out`. Local binary `/usr/bin/codegraph` (v1.4.1, installed via official `install.sh`) skips registry lookup and initializes in ~1s.
+  - **Prereq:** `codegraph` on PATH — already satisfied by `curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh` (step 1 in `scripts/setup-symlinks.sh` "Next" instructions).
+  - **Docs:** `README.md` — added "MCP wiring" note under CodeGraph section explaining the binary-vs-npx rationale.
+  - **Verification:** `echo '{...initialize...}' | codegraph serve --mcp` returns valid JSON-RPC response in seconds. Stale `npx`-spawned MCP processes killed; healthy binary process (PID 13206) retained.
+
+### Fixed
+
+- MCP server startup timeouts (`-32001: Request timed out`) for `context7`, `codegraph`, `playwright` (`settings.json`, `settings.json.template`, `settings.json.arm-template`)
+  - **Root cause:** `npx -y @<pkg>@latest` forces npm registry metadata fetch on every startup. Corporate/slow network made fetch hang >30s → MCP startup timed out.
+  - **Fix:** Dropped `-y` and `@latest` from args. `npx @<pkg>` resolves from globally installed package (no registry recheck). Tested: old form = 30s timeout, new form = ~1.3s.
+  - **Prereq:** Packages installed globally via `sudo npm i -g @upstash/context7-mcp @colbymchenry/codegraph @playwright/mcp` (already present for codegraph + playwright; context7 added).
+  - **Files:** `settings.json`, `settings.json.template`, `settings.json.arm-template` — removed `-y` + `@latest` from 3 `mcpServers` entries (`context7`, `codegraph`, `playwright`).
+  - **Docs:** `docs/playwright-arm64-jetson.md` — updated 4 stale `npx -y @playwright/mcp@latest` references to `npx @playwright/mcp`; added "Why no `-y` or `@latest`" rationale block; fixed version string (v1.62.0 → v0.0.78).
+
 ### Fixed
 
 - `spawn bash ENOENT` error in `PreToolUse:launch-process` hook (`settings.json.template`, `settings.json.arm-template`)

@@ -5,22 +5,18 @@
     "context7": {
       "command": "npx",
       "args": [
-        "-y",
-        "@upstash/context7-mcp@latest"
+        "@upstash/context7-mcp"
       ]
     },
     "sequential-thinking": {
       "command": "npx",
       "args": [
-        "-y",
         "@modelcontextprotocol/server-sequential-thinking"
       ]
     },
     "codegraph": {
-      "command": "npx",
+      "command": "codegraph",
       "args": [
-        "-y",
-        "@colbymchenry/codegraph",
         "serve",
         "--mcp"
       ]
@@ -36,8 +32,7 @@
     "playwright": {
       "command": "npx",
       "args": [
-        "-y",
-        "@playwright/mcp@latest",
+        "@playwright/mcp",
         "--browser",
         "chrome",
         "--headless",
