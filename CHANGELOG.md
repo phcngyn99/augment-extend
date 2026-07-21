@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `spawn bash ENOENT` error in `PreToolUse:launch-process` hook (`settings.json.template`, `settings.json.arm-template`)
+  - **Root cause:** Augment CLI spawned from GUI/daemon with stripped `PATH` (missing `/bin`, `/usr/bin`). Hook command `~/.augment/hooks/dcg-pre-shell.sh` triggered Node `child_process.spawn('bash', ...)`, which failed PATH lookup for `bash`.
+  - **Fix:** Bypass `.sh` wrapper. Point hook command directly at Python file: `/usr/bin/env python3 /home/wanek3/.augment/hooks/dcg-pre-shell.py`. `/usr/bin/env` is absolute (no PATH lookup for env itself), uses POSIX default PATH fallback when env PATH empty, resolves `python3` at runtime.
+  - **Why not absolute `/usr/bin/python3`:** Keeps portability across systems where Python lives at different paths (e.g., `/opt/homebrew/bin/python3` on macOS ARM64).
+  - **Verification:** Tested with empty env (`env -i /usr/bin/env python3 ...`) → resolves to `/usr/bin/python3` via POSIX default PATH. Both safe (`echo`) and destructive (`rm -rf /`) commands tested end-to-end.
+
 ### Added
 
 - Playwright MCP server to `settings.json` (`mcpServers.playwright`) — ARM64 Jetson config
