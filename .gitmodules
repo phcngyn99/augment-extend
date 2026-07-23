@@ -34,3 +34,6 @@
 [submodule "submodule/obsidian-skills"]
 	path = submodule/obsidian-skills
 	url = https://github.com/kepano/obsidian-skills.git
+[submodule "submodule/i-have-adhd"]
+	path = submodule/i-have-adhd
+	url = https://github.com/ayghri/i-have-adhd

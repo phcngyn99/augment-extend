@@ -32,7 +32,7 @@ type: always_apply
 
 ## Submodules
 
-- All submodules are in `submodule/` directory (11 total: ECC, agent-browser, caveman, codegraph, impeccable, obsidian-skills, ppt-master, skills, superpowers, ui-ux-pro-max-skill, destructive-command-guard)
+- All submodules are in `submodule/` directory (12 total: ECC, agent-browser, caveman, codegraph, impeccable, obsidian-skills, ppt-master, skills, superpowers, ui-ux-pro-max-skill, destructive-command-guard, i-have-adhd)
 - When updating submodules:
   - Use `git submodule update --remote <submodule-name>` for targeted updates
   - Test symlinks still work after updates

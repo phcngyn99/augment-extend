@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added i-have-adhd submodule (`submodule/i-have-adhd`) — source for new `rules/i-have-adhd.md` (copied, not symlinked)
+  - Copied `submodule/i-have-adhd/skills/i-have-adhd/SKILL.md` → `rules/i-have-adhd.md` as a real file with `type: always_apply` frontmatter (replaced skill frontmatter)
+  - Source of truth: `scripts/store/rules/i-have-adhd.md` (restored to `rules/` by `scripts/setup-symlinks.sh`)
+  - Skill symlink NOT created — i-have-adhd is a rule (always-apply output style), not a core skill
+  - Updated counts: README.md (11 → 12 submodules, rules list adds `i-have-adhd.md`), AGENTS.md (11 → 12 submodules)
+  - Submodule kept as upstream source for future updates to the rule content
+
 ### Changed
 
 - CodeGraph MCP server now launched via local binary instead of `npx` (`settings.json`, `settings.json.template`, `settings.json.arm-template`)
