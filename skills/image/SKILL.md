@@ -1,15 +1,15 @@
 ---
-name: image-reader
-description: Read, inspect, transcribe, or analyze image files (PNG, JPG, JPEG, GIF, WEBP) by delegating to the image-reader subagent (Grok 4.5, vision-capable). Use whenever the primary model (GLM 5.2, no vision) encounters an image it cannot process. Requires an explicit image path from the caller.
+name: image
+description: Read, inspect, transcribe, or analyze image files (PNG, JPG, JPEG, GIF, WEBP) by delegating to the `image` subagent (Grok 4.5, vision-capable). Use whenever the primary model (GLM 5.2, no vision) encounters an image it cannot process. Requires an explicit image path from the caller. Overrides any builtin image skill.
 ---
 
-# Image Reader Skill
+# Image Skill
 
-This skill delegates image-reading work to the `image-reader` subagent. The primary model (GLM 5.2) cannot process images directly — the subagent runs on Grok 4.5, which has vision support.
+This skill delegates image-reading work to the `image` subagent. The primary model (GLM 5.2) cannot process images directly — the subagent runs on Grok 4.5, which has vision support.
 
 ## When to use
 
-Invoke this skill (and the `image-reader` subagent) when any of the following appear:
+Invoke this skill (and the `image` subagent) when any of the following appear:
 
 - A user references an image file by path: `./screenshot.png`, `docs/diagram.jpg`, etc.
 - A user asks to "read", "view", "describe", "transcribe", "analyze", or "inspect" an image
@@ -26,7 +26,7 @@ Invoke this skill (and the `image-reader` subagent) when any of the following ap
 
 ## How to invoke
 
-The `image-reader` subagent REQUIRES an explicit image path. It does not search for files.
+The `image` subagent REQUIRES an explicit image path. It does not search for files.
 
 ### Step 1 — Confirm the path
 
@@ -43,13 +43,13 @@ Or use `codebase-retrieval` if the image name is mentioned in code/configs.
 Pass the explicit path in the invocation:
 
 ```
-Use the image-reader agent on <path>
+Use the image agent on <path>
 ```
 
 or:
 
 ```
-Invoke image-reader with path <path> and ask: <question>
+Invoke image with path <path> and ask: <question>
 ```
 
 ### Step 3 — Receive the report

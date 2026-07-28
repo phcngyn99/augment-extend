@@ -4,9 +4,9 @@ Augment CLI extension — specialized agents, skills, workflows via 12 submodule
 
 ## Overview
 
-- **28 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, impeccable (design guidance), Obsidian (markdown, canvas, bases, CLI, defuddle), image-reader (vision delegation)
+- **28 Core Skills** (always on) — TDD, planning, debug, code review, git workflows, impeccable (design guidance), Obsidian (markdown, canvas, bases, CLI, defuddle), image (vision delegation)
 - **7 Optional Skills** (on-demand) — cavecrew, caveman-compress, domain-modeling, grilling, grill-with-docs, karpathy-guidelines, ppt-master
-- **9 Subagents** — explore, research, code, validate, e2e-runner, auggie-guide, general-purpose, plan, image-reader (Grok 4.5 vision)
+- **9 Subagents** — explore, research, code, validate, e2e-runner, auggie-guide, general-purpose, plan, image (Grok 4.5 vision, overrides builtin)
 - **CodeGraph MCP** — Structural code intelligence (replaces codebase-retrieval)
 - **Agent Browser MCP** — E2E testing + browser automation
 - **Context7 MCP** — Library docs lookup
@@ -16,10 +16,10 @@ Augment CLI extension — specialized agents, skills, workflows via 12 submodule
 
 ```
 ~/.augment/
-├── agents/              # e2e-runner.md, plan.md, image-reader.md
+├── agents/              # e2e-runner.md, plan.md, image.md
 ├── skills/              # 28 core (symlinks to submodule/*/skills/*)
 ├── skills-lib/          # 7 optional (cavecrew, caveman-compress, domain-modeling, karpathy-guidelines, etc.)
-├── rules/               # codegraph.md, agent-browser-only.md, finn-guidelines.md, caveman-active.md, i-have-adhd.md, image-reader.md
+├── rules/               # codegraph.md, agent-browser-only.md, finn-guidelines.md, caveman-active.md, i-have-adhd.md, image.md
 ├── hooks/               # SessionStart hook (superpowers integration)
 ├── scripts/             # install-to-augment.sh, setup-symlinks.sh, show-workspace.sh, update-submodules.sh, store/
 ├── submodule/           # 12 submodules (ECC, agent-browser, caveman, codegraph, impeccable, obsidian-skills, i-have-adhd, etc.)
