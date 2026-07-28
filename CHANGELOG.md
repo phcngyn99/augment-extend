@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- New `image-reader` subagent (`agents/image-reader.md`)
+  - **Purpose:** gives main agent (GLM 5.2, no vision) the ability to read images by delegating to a vision-capable model
+  - **Model:** `grok4.5` (xAI Grok 4.5 — vision support)
+  - **Tools:** `view`, `launch-process` (read-only — no file edits, no codebase search)
+  - **Input contract:** caller MUST provide explicit image path; subagent does not search for files
+  - **Use case:** invoked when main agent encounters PNG/JPG/JPEG/GIF/WEBP files needing inspection, transcription, or analysis
+- New `image-reader` skill (`skills/image-reader/SKILL.md`, mirrored to `scripts/store/skills/image-reader/SKILL.md`)
+  - **Purpose:** workflow skill for invoking the `image-reader` subagent — when to use, how to pass the path, how to handle the report
+  - **Includes:** supported formats table, error-case table, why-a-subagent rationale
+- New `image-reader` rule (`rules/image-reader.md`, mirrored to `scripts/store/rules/image-reader.md`)
+  - **Type:** `always_apply`
+  - **Purpose:** forces main agent (GLM 5.2, no vision) to delegate image reads to `image-reader` subagent instead of attempting to read image bytes directly
+  - **Forbidden behaviors:** claiming to see images it cannot, inventing contents from filenames, calling `view` on images and presenting empty output as contents
 - Added i-have-adhd submodule (`submodule/i-have-adhd`) — source for new `rules/i-have-adhd.md` (copied, not symlinked)
   - Copied `submodule/i-have-adhd/skills/i-have-adhd/SKILL.md` → `rules/i-have-adhd.md` as a real file with `type: always_apply` frontmatter (replaced skill frontmatter)
   - Source of truth: `scripts/store/rules/i-have-adhd.md` (restored to `rules/` by `scripts/setup-symlinks.sh`)
